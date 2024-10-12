@@ -1,0 +1,1782 @@
+DLGINCLUDE RCDATA DISCARDABLE
+BEGIN
+    "STM.H\0"
+END
+
+INPUTDLG DIALOG FIXED 366, 18, 195, 102
+STYLE DS_MODALFRAME | WS_POPUP | WS_VISIBLE | WS_CAPTION
+CAPTION "Inputs"
+FONT 8, "Times New Roman"
+BEGIN
+    LTEXT           "Input", -1, 56, 4, 18, 8
+    LTEXT           "Voltage", -1, 161, 4, 29, 8, NOT WS_GROUP
+    LTEXT           "Bits", -1, 110, 4, 15, 8, NOT WS_GROUP
+    CONTROL         "Channel 0", I_CH0, "Button", BS_AUTOCHECKBOX | WS_GROUP | 
+                    WS_TABSTOP, 4, 17, 44, 10
+    CONTROL         "Channel 1", I_CH1, "Button", BS_AUTOCHECKBOX | 
+                    WS_TABSTOP, 4, 34, 44, 10
+    CONTROL         "Channel 2", I_CH2, "Button", BS_AUTOCHECKBOX | 
+                    WS_TABSTOP, 4, 51, 44, 10
+    CONTROL         "Channel 3", I_CH3, "Button", BS_AUTOCHECKBOX | 
+                    WS_TABSTOP, 4, 68, 44, 10
+    EDITTEXT        I_DATA0, 51, 15, 26, 14, ES_RIGHT | ES_MULTILINE | 
+                    ES_READONLY | WS_GROUP | NOT WS_TABSTOP
+    EDITTEXT        I_DATA1, 51, 32, 26, 14, ES_RIGHT | ES_MULTILINE | 
+                    ES_READONLY | NOT WS_TABSTOP
+    EDITTEXT        I_DATA2, 51, 49, 26, 14, ES_RIGHT | ES_MULTILINE | 
+                    ES_READONLY | NOT WS_TABSTOP
+    EDITTEXT        I_DATA3, 51, 66, 26, 14, ES_RIGHT | ES_MULTILINE | 
+                    ES_READONLY | NOT WS_TABSTOP
+    EDITTEXT        I_BITS0, 80, 15, 75, 14, ES_RIGHT | ES_MULTILINE | 
+                    ES_READONLY | NOT WS_TABSTOP
+    EDITTEXT        I_BITS1, 80, 32, 75, 14, ES_RIGHT | ES_MULTILINE | 
+                    ES_READONLY | NOT WS_TABSTOP
+    EDITTEXT        I_BITS2, 80, 49, 75, 14, ES_RIGHT | ES_MULTILINE | 
+                    ES_READONLY | NOT WS_TABSTOP
+    EDITTEXT        I_BITS3, 80, 66, 75, 14, ES_RIGHT | ES_MULTILINE | 
+                    ES_READONLY | NOT WS_TABSTOP
+    EDITTEXT        I_VOLTS0, 158, 15, 34, 14, ES_RIGHT | ES_MULTILINE | 
+                    ES_READONLY | NOT WS_TABSTOP
+    EDITTEXT        I_VOLTS1, 158, 32, 34, 14, ES_RIGHT | ES_MULTILINE | 
+                    ES_READONLY | NOT WS_TABSTOP
+    EDITTEXT        I_VOLTS2, 158, 49, 34, 14, ES_RIGHT | ES_MULTILINE | 
+                    ES_READONLY | NOT WS_TABSTOP
+    EDITTEXT        I_VOLTS3, 158, 66, 34, 14, ES_RIGHT | ES_MULTILINE | 
+                    ES_READONLY | NOT WS_TABSTOP
+    PUSHBUTTON      "Update", I_UPDATE, 51, 85, 40, 14, WS_GROUP
+    PUSHBUTTON      "Close", INPUT_CLOSE, 107, 85, 40, 14, WS_GROUP
+END
+
+OUTPUTDLG DIALOG FIXED 366, 141, 195, 114
+STYLE DS_MODALFRAME | WS_POPUP | WS_VISIBLE | WS_CAPTION
+CAPTION "Outputs"
+FONT 8, "Times New Roman"
+BEGIN
+    LTEXT           "Channel", -1, 32, 5, 27, 9
+    EDITTEXT        O_CH_EDIT, 73, 17, 14, 14, NOT WS_BORDER | WS_DLGFRAME
+    SCROLLBAR       O_CH_SCROLL, 12, 17, 58, 14
+    GROUPBOX        "Range", RANGE, 98, 3, 90, 30, WS_GROUP
+    RADIOBUTTON     "+/- 5V", FIVE_RANGE, 105, 14, 34, 14, WS_TABSTOP
+    RADIOBUTTON     "+/- 10V", TEN_RANGE, 144, 14, 38, 14, WS_TABSTOP
+    LTEXT           "Output", -1, 23, 39, 25, 10
+    EDITTEXT        O_DATA_EDIT, 24, 52, 22, 14, NOT WS_BORDER | WS_DLGFRAME
+    LTEXT           "Binary Bits", -1, 76, 40, 39, 9, NOT WS_GROUP
+    EDITTEXT        O_BITS_EDIT, 68, 52, 54, 14, NOT WS_BORDER | WS_DLGFRAME
+    LTEXT           "Voltage", O_VOLTS, 144, 40, 26, 9, NOT WS_GROUP
+    EDITTEXT        O_VOLTS_EDIT, 140, 52, 34, 14, NOT WS_BORDER | 
+                    WS_DLGFRAME
+    SCROLLBAR       O_DATA_SCROLL, 12, 69, 174, 14
+    PUSHBUTTON      "Set &Range", SET_RANGE, 21, 91, 40, 14, WS_GROUP
+    PUSHBUTTON      "&OUTPUT", SEND_OUTPUT, 77, 91, 40, 14, WS_GROUP
+    PUSHBUTTON      "E&xit", OUTPUT_EXIT, 133, 91, 40, 14, WS_GROUP
+END
+
+COARSEDLG DIALOG FIXED 46, 59, 324, 167
+STYLE DS_MODALFRAME | WS_POPUP | WS_VISIBLE | WS_CAPTION
+CAPTION "Coarse Motion"
+FONT 8, "Times New Roman"
+BEGIN
+    GROUPBOX        "Mode", -1, 7, 8, 83, 44, WS_GROUP
+    CONTROL         "Translation: X", COARSE_TRANS_X, "Button", 
+                    BS_AUTORADIOBUTTON | WS_TABSTOP, 17, 23, 62, 10
+    CONTROL         "Translation: Y", COARSE_TRANS_Y, "Button", 
+                    BS_AUTORADIOBUTTON | WS_TABSTOP, 17, 36, 62, 10
+    GROUPBOX        "Waveform", COARSE_WAVE_GROUP, 98, 8, 83, 44, WS_GROUP
+    CONTROL         "Paracut", COARSE_PARACUT, "Button", BS_AUTORADIOBUTTON | 
+                    WS_TABSTOP, 117, 23, 41, 10
+    CONTROL         "Sawtooth", COARSE_SAWTOOTH, "Button", 
+                    BS_AUTORADIOBUTTON | WS_TABSTOP, 117, 36, 41, 10
+    GROUPBOX        "Step Size", COARSE_STEP_GROUP, 7, 58, 83, 64, WS_GROUP
+    LTEXT           "Bits", COARSE_TEXT1, 18, 74, 15, 8, NOT WS_GROUP
+    EDITTEXT        COARSE_STEPS_EDIT, 15, 85, 20, 12
+    LTEXT           "Angstroms", COARSE_TEXT2, 37, 74, 37, 8, NOT WS_GROUP
+    EDITTEXT        COARSE_ANGS_EDIT, 41, 85, 29, 12
+    SCROLLBAR       COARSE_STEPS_SCROLL, 13, 101, 62, 12
+    GROUPBOX        "Period", COARSE_PERIOD_GROUP, 98, 58, 83, 64, WS_GROUP
+    LTEXT           "Bits", COARSE_TEXT3, 108, 75, 16, 8, NOT WS_GROUP
+    EDITTEXT        COARSE_PERIOD_EDIT, 106, 86, 20, 12
+    SCROLLBAR       COARSE_PERIOD_SCROLL, 106, 101, 62, 12
+    LTEXT           "Frequency", COARSE_TEXT4, 134, 67, 34, 8, NOT WS_GROUP
+    LTEXT           "Hz", COARSE_TEXT5, 146, 75, 10, 8, NOT WS_GROUP
+    EDITTEXT        COARSE_FREQ_EDIT, 138, 86, 27, 12
+    GROUPBOX        "Positions", SCAN_Z_VOLTS_EDIT, 7, 126, 175, 34, 
+                    WS_GROUP
+    LTEXT           "X", -1, 12, 142, 7, 8, NOT WS_GROUP
+    LTEXT           "Y", -1, 98, 142, 7, 8, NOT WS_GROUP
+    EDITTEXT        COARSE_X_EDIT, 22, 139, 43, 14, ES_RIGHT | ES_MULTILINE | 
+                    ES_READONLY | NOT WS_TABSTOP
+    EDITTEXT        COARSE_Y_EDIT, 108, 139, 43, 14, ES_RIGHT | ES_MULTILINE | 
+                    ES_READONLY | NOT WS_TABSTOP
+    PUSHBUTTON      "Reset", COARSE_X_RESET, 68, 139, 22, 14
+    PUSHBUTTON      "Reset", COARSE_Y_RESET, 154, 139, 22, 14
+    GROUPBOX        "Continuous Steps", -1, 193, 8, 122, 94, WS_GROUP
+    LTEXT           "Stepping Time", -1, 200, 20, 47, 8, NOT WS_GROUP
+    EDITTEXT        COARSE_TIME_EDIT, 198, 31, 51, 14, ES_RIGHT | 
+                    ES_MULTILINE | NOT WS_TABSTOP
+    LTEXT           "Stepping Distance", -1, 253, 20, 58, 8, NOT WS_GROUP
+    EDITTEXT        COARSE_DISTANCE_EDIT, 261, 31, 43, 14, ES_RIGHT | 
+                    ES_MULTILINE | ES_READONLY | NOT WS_TABSTOP
+    LTEXT           "Number of Steps", -1, 214, 51, 53, 8, NOT WS_GROUP
+    EDITTEXT        COARSE_NUM_STEPS_EDIT, 271, 49, 24, 12
+    SCROLLBAR       COARSE_NUM_STEPS_SCROLL, 202, 63, 106, 12
+    PUSHBUTTON      "<=Go-", COARSE_LGO, 208, 79, 40, 16
+    PUSHBUTTON      "+Go=>", COARSE_RGO, 260, 79, 40, 16
+    GROUPBOX        "Single Step", -1, 193, 106, 122, 34, WS_GROUP
+    PUSHBUTTON      "<< Step-", COARSE_LSTEP, 208, 119, 40, 16
+    PUSHBUTTON      "+Step >>", COARSE_RSTEP, 260, 119, 40, 16
+    CONTROL         "Enable Edit", COARSE_EDIT_ENABLE, "Button", 
+                    BS_AUTOCHECKBOX | WS_GROUP | WS_TABSTOP, 201, 148, 48, 
+                    10
+    PUSHBUTTON      "Exit", COARSE_EXIT, 268, 146, 40, 14, WS_GROUP
+END
+
+TIPDLG DIALOG FIXED 58, 21, 416, 226
+STYLE DS_MODALFRAME | WS_POPUP | WS_VISIBLE | WS_CAPTION
+CAPTION "Tip Approach"
+FONT 8, "Times New Roman"
+BEGIN
+    PUSHBUTTON      "Tip Approach", TIP_APPROACH, 182, 146, 52, 31
+    PUSHBUTTON      "Exit", TIP_EXIT, 368, 205, 40, 14, WS_GROUP
+    EDITTEXT        TIP_ACCEL_EDIT, 148, 37, 13, 12
+    GROUPBOX        "Acceleration", -1, 107, 21, 80, 50
+    SCROLLBAR       TIP_ACCEL_SCROLL, 115, 54, 65, 12
+    LTEXT           "% of g", -1, 119, 40, 24, 8
+    PUSHBUTTON      "/Step Down", TIP_STEP_DOWN, 119, 163, 52, 14
+    PUSHBUTTON      "/Step Up", TIP_STEP_UP, 119, 146, 52, 14
+    EDITTEXT        TIP_NUMBER_EDIT, 72, 152, 29, 12, ES_AUTOHSCROLL
+    LTEXT           "Number of steps", READ_BACKWARD, 16, 155, 56, 8
+    SCROLLBAR       TIP_NUMBER_SCROLL, 17, 168, 85, 12
+    GROUPBOX        "Waveform Control", READ_BOTH_WAY, 11, 8, 185, 129
+    EDITTEXT        TIP_DELAY_EDIT, 53, 39, 32, 12, ES_AUTOHSCROLL
+    SCROLLBAR       TIP_DELAY_SCROLL, 27, 55, 65, 12
+    LTEXT           "ms", LINEARIZE, 36, 40, 12, 8
+    EDITTEXT        TIP_X_STEP_BITS_EDIT, 68, 99, 24, 12, ES_AUTOHSCROLL
+    SCROLLBAR       TIP_X_STEP_SCROLL, 27, 114, 65, 12
+    LTEXT           "Bits", FIT_PLANE, 71, 90, 20, 8
+    EDITTEXT        TIP_ZO_STEP_BITS_EDIT, 156, 99, 24, 12, ES_AUTOHSCROLL
+    SCROLLBAR       TIP_ZO_STEP_SCROLL, 115, 114, 65, 12
+    LTEXT           "Bits", DELAY_FREQ_DEP, 160, 90, 20, 8
+    GROUPBOX        "Delay", SEND_X_Y_OFFSETS, 19, 21, 80, 50
+    GROUPBOX        "xo Step Size", FEEDBACK_ON, 19, 75, 80, 55
+    EDITTEXT        TIP_X_STEP_VOLTS_EDIT, 27, 99, 32, 12, ES_AUTOHSCROLL
+    LTEXT           "Volts", TAKE_LOG, 34, 89, 20, 8
+    GROUPBOX        "zo Step Size", SMOOTH00, 107, 75, 80, 55
+    EDITTEXT        TIP_ZO_STEP_VOLTS_EDIT, 115, 99, 32, 12, ES_AUTOHSCROLL
+    LTEXT           "Volts", FIELD0_1, 122, 89, 20, 8
+    EDITTEXT        TIP_ZO_EDIT, 78, 200, 32, 12, ES_READONLY
+    LTEXT           "Tunneled At:", -1, 25, 202, 44, 8
+    PUSHBUTTON      "Bias Square Wave", BIAS_SQUARE_WAVE, 326, 165, 79, 14
+    GROUPBOX        "Steps", READ_FORWARD, 10, 142, 100, 45
+    PUSHBUTTON      "Tip Retract", TIP_RETRACT, 250, 146, 50, 14
+    PUSHBUTTON      "Tip Unretract", TIP_UNRETRACT, 250, 163, 50, 14
+    PUSHBUTTON      "Controls...", TIP_CONTROLS, 326, 146, 77, 14
+    PUSHBUTTON      "Oscilloscope", TIP_OSCILLOSCOPE, 249, 180, 52, 14
+    PUSHBUTTON      "Up Defaults", TIP_UP_DEFAULTS, 359, 83, 55, 14
+    PUSHBUTTON      "Down Defaults", TIP_DOWN_DEFAULTS, 358, 106, 55, 14
+    GROUPBOX        "Step Parameters", SEL_FCNS, 207, 79, 146, 58
+    LTEXT           "# of Giant Steps:", IM_X_SCROLL, 212, 95, 55, 8
+    LTEXT           "Baby Step Size:", CRASH_TOLERANCE, 212, 116, 55, 8
+    EDITTEXT        TIP_NUM_GIANT, 274, 93, 25, 12, ES_AUTOHSCROLL
+    EDITTEXT        TIP_BABY_SIZE, 274, 114, 25, 12, ES_AUTOHSCROLL
+    SCROLLBAR       TIP_GIANT_SCROLL, 307, 93, 43, 12
+    SCROLLBAR       TIP_BABY_SCROLL, 307, 114, 43, 12
+    LTEXT           "Status:", HEATER_TARGET_CURRENT, 134, 202, 27, 8
+    LTEXT           "", TIP_STATUS, 168, 202, 85, 8
+    GROUPBOX        "Minimum Tunneling Current", IM_BIG_SMALL, 207, 26, 113, 
+                    54
+    EDITTEXT        TIP_TUNNEL_BITS, 256, 49, 24, 12, ES_AUTOHSCROLL
+    SCROLLBAR       TIP_TUNNEL_SCROLL, 215, 64, 65, 12
+    LTEXT           "Bits", CRASH_DO_NOTHING, 260, 40, 20, 8
+    EDITTEXT        TIP_TUNNEL_VOLTS, 215, 49, 32, 12, ES_AUTOHSCROLL
+    LTEXT           "Volts", CRASH_STOP, 222, 39, 20, 8
+    PUSHBUTTON      "Stop!", TIP_STOP, 138, 180, 71, 14
+    LTEXT           "Pass #", CRASH_AUTO_Z, 257, 202, 24, 8
+    LTEXT           "", TIP_PASS_NUM, 284, 202, 20, 8
+END
+
+FINEDLG DIALOG FIXED 11, 12, 475, 323
+STYLE DS_MODALFRAME | WS_POPUP | WS_VISIBLE | WS_CAPTION
+CAPTION "Fine Motion"
+FONT 8, "Times New Roman"
+BEGIN
+    CONTROL         "", -1, "Static", SS_BLACKFRAME, 16, 297, 302, 1
+    CONTROL         "", -1, "Static", SS_BLACKFRAME, 16, 15, 1, 282
+    CONTROL         "", -1, "Static", SS_BLACKFRAME, 17, 15, 302, 1
+    CONTROL         "", -1, "Static", SS_BLACKFRAME, 318, 16, 1, 282
+    SCROLLBAR       FINE_Y_SCROLL, 330, 4, 12, 304, SBS_VERT
+    SCROLLBAR       FINE_X_SCROLL, 5, 308, 326, 12
+    LTEXT           "X", -1, 350, 83, 7, 8
+    LTEXT           "Bits", -1, 370, 70, 15, 8, NOT WS_GROUP
+    LTEXT           "Voltage", -1, 394, 70, 29, 8, NOT WS_GROUP
+    LTEXT           "Angstroms", -1, 427, 70, 36, 8, NOT WS_GROUP
+    CONTROL         "Auto Ramp", FINE_AUTO_RAMP, "Button", BS_AUTOCHECKBOX | 
+                    WS_GROUP | WS_TABSTOP, 387, 26, 45, 10
+    LTEXT           "Y", -1, 351, 153, 7, 8
+    LTEXT           "Bits", -1, 370, 140, 15, 8, NOT WS_GROUP
+    LTEXT           "Voltage", -1, 394, 140, 29, 8, NOT WS_GROUP
+    LTEXT           "Angstroms", -1, 427, 140, 36, 8, NOT WS_GROUP
+    EDITTEXT        FINE_X_BITS_EDIT, 366, 80, 22, 14, NOT WS_TABSTOP
+    EDITTEXT        FINE_X_VOLTS_EDIT, 391, 80, 34, 14, NOT WS_TABSTOP
+    EDITTEXT        FINE_X_DISTANCE_EDIT, 428, 80, 34, 14, NOT WS_TABSTOP
+    PUSHBUTTON      "Ramp To", FINE_X_RAMP, 346, 97, 40, 14
+    PUSHBUTTON      "Jump To", FINE_X_JUMP, 389, 97, 40, 14
+    PUSHBUTTON      "Zero", FINE_X_ZERO, 432, 97, 40, 14
+    PUSHBUTTON      "Exit", FINE_EXIT, 399, 277, 40, 14, WS_GROUP
+    EDITTEXT        FINE_Y_BITS_EDIT, 366, 150, 22, 14, NOT WS_TABSTOP
+    EDITTEXT        FINE_Y_VOLTS_EDIT, 391, 150, 34, 14, NOT WS_TABSTOP
+    EDITTEXT        FINE_Y_DISTANCE_EDIT, 428, 150, 34, 14, NOT WS_TABSTOP
+    PUSHBUTTON      "Ramp To", FINE_Y_RAMP, 346, 167, 40, 14
+    PUSHBUTTON      "Jump To", FINE_Y_JUMP, 389, 167, 40, 14
+    PUSHBUTTON      "Zero", FINE_Y_ZERO, 432, 167, 40, 14
+END
+
+SCANDLG DIALOG FIXED 11, 19, 521, 350
+STYLE DS_ABSALIGN | DS_MODALFRAME | WS_MINIMIZEBOX | WS_MAXIMIZEBOX | 
+    WS_POPUP | WS_VISIBLE | WS_CAPTION
+CAPTION "SCAN"
+FONT 8, "Times New Roman"
+BEGIN
+    CONTROL         "", -1, "Static", SS_BLACKFRAME, 17, 16, 301, 279
+    LTEXT           "Bits", -1, 368, 32, 15, 8
+    LTEXT           "Voltage", -1, 392, 32, 29, 8, NOT WS_GROUP
+    LTEXT           "Angstroms", -1, 425, 32, 36, 8, NOT WS_GROUP
+    LTEXT           "X", -1, 354, 45, 7, 8, NOT WS_GROUP
+    EDITTEXT        SCAN_X_BITS_EDIT, 364, 43, 22, 14
+    EDITTEXT        SCAN_X_VOLTS_EDIT, 389, 43, 34, 14
+    EDITTEXT        SCAN_X_ANGS_EDIT, 426, 43, 34, 14
+    PUSHBUTTON      "Zero", SCAN_X_ZERO, 481, 44, 26, 14
+    LTEXT           "Y", -1, 354, 63, 7, 8, NOT WS_GROUP
+    EDITTEXT        SCAN_Y_BITS_EDIT, 364, 60, 22, 14
+    EDITTEXT        SCAN_Y_VOLTS_EDIT, 389, 60, 34, 14
+    EDITTEXT        SCAN_Y_ANGS_EDIT, 426, 60, 34, 14
+    PUSHBUTTON      "Zero", SCAN_Y_ZERO, 481, 60, 26, 14
+    GROUPBOX        "Step Size", -1, 406, 132, 106, 61, WS_GROUP
+    LTEXT           "Bits", -1, 415, 145, 15, 8, NOT WS_GROUP
+    LTEXT           "Voltage", -1, 440, 145, 29, 8, NOT WS_GROUP
+    LTEXT           "Angstroms", -1, 473, 145, 36, 8, NOT WS_GROUP
+    EDITTEXT        SCAN_STEP_BITS_EDIT, 411, 156, 22, 14
+    EDITTEXT        SCAN_STEP_VOLTS_EDIT, 437, 156, 34, 14, ES_READONLY
+    EDITTEXT        SCAN_STEP_ANGS_EDIT, 474, 156, 34, 14, ES_READONLY
+    SCROLLBAR       SCAN_STEP_SCROLL, 410, 173, 99, 12, WS_TABSTOP
+    GROUPBOX        "Scan Size", -1, 343, 193, 169, 72, WS_GROUP
+    LTEXT           "Steps", -1, 368, 205, 18, 8, NOT WS_GROUP
+    LTEXT           "Bits", -1, 400, 205, 15, 8, NOT WS_GROUP
+    LTEXT           "Voltage", -1, 424, 205, 29, 8, NOT WS_GROUP
+    LTEXT           "Angstroms", -1, 457, 205, 36, 8, NOT WS_GROUP
+    EDITTEXT        SCAN_SIZE_STEPS_EDIT, 361, 215, 32, 14, ES_AUTOHSCROLL
+    EDITTEXT        SCAN_SIZE_BITS_EDIT, 395, 215, 22, 14, ES_READONLY
+    EDITTEXT        SCAN_SIZE_VOLTS_EDIT, 421, 215, 34, 14, ES_READONLY
+    EDITTEXT        SCAN_SIZE_ANGS_EDIT, 458, 215, 34, 14, ES_READONLY
+    SCROLLBAR       SCAN_SIZE_SCROLL, 349, 232, 157, 12
+    CONTROL         "64x64", SCAN_SIZE_64, "Button", BS_AUTORADIOBUTTON | 
+                    WS_TABSTOP, 349, 247, 32, 10
+    CONTROL         "128x128", SCAN_SIZE_128, "Button", BS_AUTORADIOBUTTON | 
+                    WS_TABSTOP, 384, 247, 39, 10
+    CONTROL         "256x256", SCAN_SIZE_256, "Button", BS_AUTORADIOBUTTON | 
+                    WS_TABSTOP, 426, 247, 39, 10
+    CONTROL         "512x512", SCAN_SIZE_512, "Button", BS_AUTORADIOBUTTON | 
+                    WS_TABSTOP, 468, 247, 39, 10
+    LTEXT           "X", -1, 421, 106, 7, 8
+    CONTROL         "0.1", SCAN_X_GAIN_TENTH, "Button", BS_AUTORADIOBUTTON | 
+                    WS_TABSTOP, 431, 105, 21, 10
+    CONTROL         "1.0", SCAN_X_GAIN_ONE, "Button", BS_AUTORADIOBUTTON | 
+                    WS_TABSTOP, 455, 105, 21, 10
+    CONTROL         "10", SCAN_X_GAIN_TEN, "Button", BS_AUTORADIOBUTTON | 
+                    WS_TABSTOP, 479, 105, 21, 10
+    LTEXT           "Y", -1, 421, 118, 7, 8
+    CONTROL         "0.1", SCAN_Y_GAIN_TENTH, "Button", BS_AUTORADIOBUTTON | 
+                    WS_TABSTOP, 431, 117, 21, 10
+    CONTROL         "1.0", SCAN_Y_GAIN_ONE, "Button", BS_AUTORADIOBUTTON | 
+                    WS_TABSTOP, 455, 117, 21, 10
+    CONTROL         "10", SCAN_Y_GAIN_TEN, "Button", BS_AUTORADIOBUTTON | 
+                    WS_TABSTOP, 479, 117, 21, 10
+    PUSHBUTTON      "Zoom In", SCAN_ZOOM_IN, 352, 103, 40, 12, WS_GROUP
+    PUSHBUTTON      "Zoom Out", SCAN_ZOOM_OUT, 352, 118, 40, 12
+    PUSHBUTTON      "Detail View", SCAN_DETAIL_VIEW, 352, 148, 40, 12
+    PUSHBUTTON      "Full View", SCAN_FULL_VIEW, 352, 163, 40, 12
+    PUSHBUTTON      "Start Scan", SCAN_START, 460, 329, 55, 17, WS_GROUP
+    PUSHBUTTON      "Exit", SCAN_EXIT, 369, 333, 40, 14, WS_GROUP
+    GROUPBOX        "Gain", -1, 405, 92, 106, 39
+    GROUPBOX        "Offsets and Fine Movement", -1, 343, 23, 169, 68
+    GROUPBOX        "Zooming", COMMENT_EDIT, 343, 92, 59, 101
+    PUSHBUTTON      "Center", SCAN_CENTER, 352, 133, 40, 12
+    PUSHBUTTON      "Load", SCAN_LOAD, 324, 316, 40, 14
+    PUSHBUTTON      "Save", SCAN_SAVE, 324, 333, 40, 14
+    PUSHBUTTON      "Prescan 1", PRESCAN_BUTTON, 343, 5, 48, 16
+    PUSHBUTTON      "Comment", SCAN_COMMENT, 369, 316, 40, 14
+    SCROLLBAR       IMAGE_Y_SCROLL, 323, 16, 12, 279, SBS_VERT
+    SCROLLBAR       IMAGE_X_SCROLL, 17, 299, 301, 12
+    PUSHBUTTON      "Image Manipulation", IMAGE_MANIPULATION, 439, 5, 73, 16
+    CONTROL         "", TEST_BUTTON, "Static", SS_BLACKFRAME, 17, 319, 300, 
+                    16
+    GROUPBOX        "Scan Order and Read Direction", FEEDBACK_OFF, 343, 265, 
+                    173, 46
+    CONTROL         "X First", X_FIRST, "Button", BS_AUTORADIOBUTTON | 
+                    WS_GROUP, 347, 279, 39, 10
+    CONTROL         "Y First", Y_FIRST, "Button", BS_AUTORADIOBUTTON, 347, 
+                    289, 39, 10
+    CONTROL         "Read Forward", READ_FORWARD, "Button", 
+                    BS_AUTORADIOBUTTON | WS_GROUP, 392, 279, 61, 10
+    CONTROL         "Read Backward", READ_BACKWARD, "Button", 
+                    BS_AUTORADIOBUTTON, 392, 289, 62, 10
+    CONTROL         "2 Images", READ_2_IMAGES, "Button", BS_AUTORADIOBUTTON, 
+                    460, 289, 43, 10
+    CONTROL         "1 Image", READ_1_IMAGE, "Button", BS_AUTORADIOBUTTON, 
+                    460, 279, 43, 10
+    CONTROL         "2 ± Images", READ_2_POLAR_IMAGES, "Button", 
+                    BS_AUTORADIOBUTTON, 460, 299, 49, 10
+    PUSHBUTTON      "Send", SEND_X_Y_OFFSETS, 481, 75, 25, 14, WS_GROUP
+    SCROLLBAR       SCAN_Y_SCROLL, 465, 37, 12, 48, SBS_VERT
+    SCROLLBAR       SCAN_X_SCROLL, 364, 77, 95, 12
+    LTEXT           "Read Both Ways:", TEST_EXIT, 453, 271, 57, 8
+    LTEXT           "Scan Time:", INTER_LINE_DELAY_VALUE, 414, 317, 39, 8
+    LTEXT           "", SCAN_TIME, 458, 317, 32, 8
+    PUSHBUTTON      "Deposition", DEPOSITION, 135, 1, 52, 13
+    PUSHBUTTON      "Sharpen", SCAN_SHARPENB, 58, 1, 52, 13
+    LTEXT           "", SCAN_STATUS, 52, 338, 145, 8
+    CONTROL         "Sharpen", SCAN_SHARPEN, "Button", BS_AUTOCHECKBOX | 
+                    WS_TABSTOP, 414, 334, 40, 10
+    LTEXT           "Status:", DEP_PULSE_EXIT, 17, 338, 28, 8
+    PUSHBUTTON      "Switch 1/2", SCAN_SWITCH_1_2, 352, 178, 40, 12
+    PUSHBUTTON      "Spectroscopy", SCAN_SPEC, 211, 1, 52, 13
+    CONTROL         "Plane Fit", SCAN_PLANE_FIT, "Button", BS_AUTOCHECKBOX | 
+                    WS_TABSTOP, 249, 337, 57, 10
+    CONTROL         "Fine", SCAN_FINE, "Button", BS_AUTOCHECKBOX | 
+                    WS_TABSTOP, 482, 30, 25, 10
+    PUSHBUTTON      "Prescan 2", SCAN_PRESCAN2, 394, 5, 40, 16
+END
+
+COMMENTDLG DIALOG FIXED 37, 52, 181, 116
+STYLE DS_MODALFRAME | WS_POPUP | WS_VISIBLE | WS_CAPTION
+CAPTION "Comments"
+FONT 8, "Times New Roman"
+BEGIN
+    EDITTEXT        COMMENT_EDIT, 0, 0, 181, 105, ES_MULTILINE | 
+                    ES_AUTOVSCROLL | ES_NOHIDESEL | WS_VSCROLL | WS_HSCROLL | 
+                    0x1000
+    PUSHBUTTON      "Done", COMMENT_EXIT, 0, 105, 181, 11
+END
+
+PRESCANDLG DIALOG FIXED 256, 18, 300, 297
+STYLE DS_MODALFRAME | WS_POPUP | WS_VISIBLE | WS_CAPTION
+CAPTION "Pre-Scan Controls"
+FONT 8, "Times New Roman"
+BEGIN
+    LTEXT           "Z Gain", -1, 10, 18, 33, 8
+    CONTROL         "0.1", SCAN_SCALE_001, "Button", BS_AUTORADIOBUTTON | 
+                    WS_GROUP | WS_TABSTOP, 46, 17, 28, 10
+    CONTROL         "1.0", SCAN_SCALE_01, "Button", BS_AUTORADIOBUTTON | 
+                    WS_TABSTOP, 84, 17, 29, 10
+    CONTROL         "10", SCAN_SCALE_1, "Button", BS_AUTORADIOBUTTON | 
+                    WS_TABSTOP, 122, 17, 28, 10
+    LTEXT           "Frequency", -1, 10, 29, 33, 8
+    CONTROL         "", SCAN_FREQ_100, "Button", BS_AUTORADIOBUTTON | 
+                    WS_GROUP | WS_TABSTOP, 46, 28, 38, 10
+    CONTROL         "", SCAN_FREQ_1, "Button", BS_AUTORADIOBUTTON | 
+                    WS_TABSTOP, 84, 28, 35, 10
+    CONTROL         "", SCAN_FREQ_10, "Button", BS_AUTORADIOBUTTON | 
+                    WS_TABSTOP, 123, 28, 37, 10
+    GROUPBOX        "Resolution", -1, 8, 7, 157, 38, WS_GROUP
+    GROUPBOX        "Tip Current", TIP_CURRENT, 8, 45, 157, 64, WS_GROUP
+    EDITTEXT        TIP_CURRENT_BITS_EDIT, 119, 90, 22, 12, ES_AUTOHSCROLL
+    SCROLLBAR       TIP_CURRENT_SCROLL, 53, 91, 60, 12
+    EDITTEXT        SCAN_NUM_EDIT, 174, 204, 27, 12, WS_GROUP
+    SCROLLBAR       SCAN_NUM_SCROLL, 208, 204, 77, 12
+    GROUPBOX        "Number of Samples", -1, 170, 190, 123, 33
+    GROUPBOX        "Sample Bias", SAMPLE_BIAS_VOLTS, 8, 109, 157, 39
+    GROUPBOX        "Z Offset", Z_OFFSET, 8, 216, 157, 75, WS_GROUP
+    LTEXT           "Z", -1, 11, 240, 7, 8, NOT WS_GROUP
+    EDITTEXT        SCAN_Z_BITS_EDIT, 21, 237, 22, 14
+    EDITTEXT        SCAN_Z_VOLTS_EDIT, 46, 237, 34, 14
+    EDITTEXT        SCAN_Z_ANGS_EDIT, 83, 237, 34, 14
+    PUSHBUTTON      "Zero", SCAN_Z_ZERO, 122, 254, 34, 14
+    SCROLLBAR       SCAN_Z_SCROLL, 21, 254, 96, 12
+    PUSHBUTTON      "Exit", PRESCAN_EXIT, 203, 273, 40, 16
+    EDITTEXT        SAMPLE_BIAS_BITS_EDIT, 10, 129, 22, 12, ES_AUTOHSCROLL
+    SCROLLBAR       SAMPLE_BIAS_SCROLL, 83, 129, 75, 12
+    CONTROL         "8", TIP_CURRENT_GAIN_8, "Button", BS_AUTORADIOBUTTON, 
+                    86, 56, 26, 10
+    CONTROL         "9", TIP_CURRENT_GAIN_9, "Button", BS_AUTORADIOBUTTON, 
+                    116, 56, 23, 10
+    CONTROL         "10", TIP_CURRENT_GAIN_10, "Button", BS_AUTORADIOBUTTON, 
+                    86, 67, 25, 10
+    LTEXT           "(10th powers)", TIP_ACCEL, 22, 66, 45, 8
+    LTEXT           "Bits", TIP_ACCEL_EDIT, 24, 227, 20, 8
+    LTEXT           "Voltage", TIP_ACCEL_SCROLL, 48, 227, 27, 8
+    LTEXT           "Angstroms", TIP_I, 82, 227, 38, 8
+    LTEXT           "Bits", TIP_II, 13, 119, 20, 8
+    EDITTEXT        SAMPLE_BIAS_VOLTS_EDIT, 39, 129, 32, 12, ES_AUTOHSCROLL
+    LTEXT           "Voltage", SCAN_COMMENT, 39, 119, 32, 8
+    EDITTEXT        TIP_CURRENT_AMPS_EDIT, 11, 91, 30, 12, ES_AUTOHSCROLL
+    LTEXT           "I SET Bits", TIP_STEP_DOWN, 124, 71, 20, 17
+    LTEXT           "NanoAmps", TIP_STEP_UP, 11, 80, 35, 8
+    PUSHBUTTON      "Start Scan", PRESCAN_SCAN_START, 189, 245, 71, 16
+    LTEXT           "PreAmp Gain", IMAGE_Y_OFFSET, 22, 59, 45, 8
+    EDITTEXT        TIP_CURRENT_RANGE_TEXT, 58, 79, 54, 8, ES_AUTOHSCROLL | 
+                    ES_NOHIDESEL | ES_OEMCONVERT | ES_READONLY | NOT 
+                    WS_BORDER
+    GROUPBOX        "Scanning Mode", TEST_BUTTON, 8, 151, 123, 47, WS_GROUP
+    CONTROL         "Constant Z (Feedback Off)", FEEDBACK_OFF, "Button", 
+                    BS_AUTORADIOBUTTON, 10, 162, 115, 10
+    CONTROL         "Constant Current (Feedback On)", FEEDBACK_ON, "Button", 
+                    BS_AUTORADIOBUTTON, 10, 172, 116, 10
+    CONTROL         "Feedback On, Read Current", FEEDBACK_ON_CURRENT, 
+                    "Button", BS_AUTORADIOBUTTON, 10, 182, 116, 10
+    GROUPBOX        "Step Delay", SEND_X_Y_OFFSETS, 170, 7, 123, 38, 
+                    WS_GROUP
+    CONTROL         "Freq/Feedback Dependent", DELAY_FREQ_DEP, "Button", 
+                    BS_AUTORADIOBUTTON, 179, 20, 96, 10
+    CONTROL         "Fixed:", DELAY_FIXED, "Button", BS_AUTORADIOBUTTON, 179, 
+                    32, 39, 10
+    EDITTEXT        DELAY_FIXED_VALUE, 237, 31, 32, 12, ES_AUTOHSCROLL
+    LTEXT           "µs", SCAN_Y_SCROLL_, 273, 35, 12, 8
+    GROUPBOX        "Inter-Step Delay", INTER_STEP_DELAY_BAR, 170, 45, 124, 
+                    109
+    EDITTEXT        INTER_STEP_DELAY_VALUE, 174, 56, 32, 12, ES_AUTOHSCROLL
+    LTEXT           "µs", IMAGE_Y_SCROLL, 209, 60, 20, 8
+    SCROLLBAR       INTER_STEP_SCROLL, 230, 56, 58, 12
+    EDITTEXT        STEP_VELOCITY, 225, 70, 32, 12, ES_AUTOHSCROLL
+    LTEXT           "Velocity", IMAGE_X_SCROLL, 174, 72, 30, 8
+    LTEXT           "Å/s", READ_1_IMAGE, 259, 72, 20, 8
+    PUSHBUTTON      "Send", SEND_Z_OFFSET, 122, 270, 34, 14
+    GROUPBOX        "Inter-Line Delay", TEST_EXIT, 170, 156, 124, 33
+    EDITTEXT        INTER_LINE_DELAY_VALUE, 174, 170, 32, 12, ES_AUTOHSCROLL
+    LTEXT           "µs", PAL_FNCS, 209, 172, 20, 8
+    SCROLLBAR       INTER_LINE_SCROLL, 230, 170, 58, 12
+    PUSHBUTTON      "Auto +", Z_OFFSET_AUTO_ABOVE, 122, 221, 34, 14
+    CONTROL         "Wait for tip-spacing of:", WAIT_FOR_CURRENT, "Button", 
+                    BS_AUTOCHECKBOX | WS_TABSTOP, 174, 83, 86, 10
+    EDITTEXT        TIP_SPACING, 174, 98, 31, 12, ES_AUTOHSCROLL
+    LTEXT           "Å", FFT_FCNS, 209, 100, 8, 8
+    SCROLLBAR       TIP_SPACING_SCROLL, 228, 98, 58, 12
+    PUSHBUTTON      "Controls...", PRE_SCAN_CONTROLS, 234, 228, 52, 14
+    PUSHBUTTON      "Oscilloscope", PRE_SCAN_OSCILLOSCOPE, 171, 228, 52, 14
+    LTEXT           "", SCAN_FREQ_LOW, 58, 29, 23, 12
+    LTEXT           "", SCAN_FREQ_MED, 95, 29, 23, 12
+    LTEXT           "", SCAN_FREQ_HIGH, 134, 29, 30, 12
+    CONTROL         "Abort after", DIGITAL_ABORT, "Button", BS_AUTOCHECKBOX | 
+                    WS_TABSTOP, 174, 116, 50, 10
+    EDITTEXT        DIGITAL_MAX_TRY, 224, 115, 32, 12, ES_AUTOHSCROLL
+    LTEXT           "tries.", RANDOM_1, 263, 117, 20, 8
+    CONTROL         "Crash Protect", Z_OFFSET_CRASH, "Button", 
+                    BS_AUTOCHECKBOX | WS_TABSTOP, 21, 273, 67, 10
+    PUSHBUTTON      "Auto -", Z_OFFSET_AUTO_BELOW, 122, 237, 34, 14
+    PUSHBUTTON      "Flip", PRESCAN_BIAS_FLIP, 72, 115, 40, 12
+    LTEXT           "Require", SCAN_STATUS, 175, 132, 28, 8
+    LTEXT           "consequetive, in range values.", READ_2_POLAR_IMAGES, 
+                    179, 143, 96, 8
+    SCROLLBAR       PRESCAN_CONSEQ_SCROLL, 238, 130, 48, 12
+    PUSHBUTTON      "Send", PRESCAN_BIAS_SEND, 118, 115, 40, 12
+END
+
+IMAGEDLG DIALOG FIXED 35, 12, 540, 317
+STYLE DS_MODALFRAME | WS_POPUP | WS_VISIBLE | WS_CAPTION
+CAPTION "Image Manipulation"
+FONT 8, "Times New Roman"
+BEGIN
+    CONTROL         "", TEST_BUTTON, "Static", SS_BLACKFRAME, 1, 1, 299, 279
+    CONTROL         "Large", SMOOTH_LARGE, "Button", BS_AUTORADIOBUTTON | 
+                    WS_GROUP | WS_TABSTOP, 382, 83, 39, 10
+    CONTROL         "Small", SMOOTH_SMALL, "Button", BS_AUTORADIOBUTTON, 382, 
+                    72, 39, 10
+    CONTROL         "", IMAGE_Y_SCROLL, "Static", SS_BLACKFRAME | WS_GROUP, 
+                    2, 297, 298, 16
+    GROUPBOX        "Data Manipulation", SEND_X_Y_OFFSETS, 318, 5, 222, 182
+    PUSHBUTTON      "Linearize", LINEARIZE, 329, 16, 40, 14
+    PUSHBUTTON      "Take Log", TAKE_LOG, 372, 16, 40, 14
+    PUSHBUTTON      "Fit Plane", FIT_PLANE, 415, 16, 40, 14
+    GROUPBOX        "Filter", DELAY_FIXED, 323, 50, 210, 55
+    GROUPBOX        "Image Manipulation", DELAY_FREQ_DEP, 319, 189, 221, 55
+    PUSHBUTTON      "Project 3D...", PROJECT3D, 403, 266, 54, 14
+    PUSHBUTTON      "Save As GIF", SAVE_GIF, 325, 201, 54, 14
+    PUSHBUTTON      "1/4 Images", IM_BIG_SMALL, 383, 201, 45, 14
+    PUSHBUTTON      "Filter", SMOOTH, 329, 60, 46, 14
+    PUSHBUTTON      "Normalize", NORMALIZE, 329, 77, 46, 14
+    EDITTEXT        SMOOTH0_1, 477, 60, 24, 12, ES_AUTOHSCROLL | WS_GROUP
+    EDITTEXT        SMOOTH_1_1, 453, 60, 24, 12, ES_AUTOHSCROLL
+    EDITTEXT        SMOOTH1_1, 501, 60, 24, 12, ES_AUTOHSCROLL
+    EDITTEXT        SMOOTH_10, 453, 72, 24, 12, ES_AUTOHSCROLL
+    EDITTEXT        SMOOTH00, 477, 72, 24, 12, ES_AUTOHSCROLL
+    EDITTEXT        SMOOTH10, 501, 72, 24, 12, ES_AUTOHSCROLL
+    EDITTEXT        SMOOTH11, 501, 84, 24, 12, ES_AUTOHSCROLL
+    GROUPBOX        "Average", SCAN_Y_SCROLL_, 325, 107, 48, 44, WS_GROUP
+    PUSHBUTTON      "1", AVG_1, 330, 119, 18, 14
+    PUSHBUTTON      "2", AVG_2, 349, 119, 18, 14
+    PUSHBUTTON      "3", AVG_3, 330, 134, 18, 14
+    PUSHBUTTON      "4", AVG_4, 349, 134, 18, 14
+    GROUPBOX        "Copy", -1, 426, 107, 48, 44
+    PUSHBUTTON      "1", COPY_1, 431, 119, 18, 14
+    PUSHBUTTON      "2", COPY_2, 450, 119, 18, 14
+    PUSHBUTTON      "3", COPY_3, 431, 134, 18, 14
+    PUSHBUTTON      "4", COPY_4, 450, 134, 18, 14
+    PUSHBUTTON      "Save", SAVE_IMAGE, 490, 125, 40, 14
+    PUSHBUTTON      "Load", LOAD_IMAGE, 490, 109, 40, 14
+    PUSHBUTTON      "Exit", IMAGE_EXIT, 490, 141, 40, 14
+    GROUPBOX        "Drift Compensation", SEND_Z_OFFSET, 322, 156, 212, 30
+    PUSHBUTTON      "Do it!", DRIFT_COMP, 489, 167, 40, 14
+    LTEXT           "a", TEST_EXIT, 328, 170, 7, 8
+    LTEXT           "b", READ_2_IMAGES, 380, 170, 7, 8
+    LTEXT           "c", INTER_LINE_DELAY_VALUE, 433, 170, 7, 8
+    PUSHBUTTON      "X", X_DERIV, 387, 35, 40, 14
+    PUSHBUTTON      "Y", Y_DERIV, 434, 35, 40, 14
+    LTEXT           "Take Derivative:", SCAN_TIME, 330, 38, 55, 8
+    PUSHBUTTON      "Xª+Yª", GRAD, 481, 35, 40, 14
+    PUSHBUTTON      "Invert", INVERT, 458, 16, 40, 14
+    PUSHBUTTON      "Palette Functions...", PAL_FCNS, 322, 249, 76, 14
+    PUSHBUTTON      "Info", IMAGE_INFO, 486, 267, 40, 14
+    PUSHBUTTON      "FFT", IMAGE_FFT, 322, 266, 35, 14
+    COMBOBOX        FILTER_LIST, 378, 56, 68, 47, CBS_DROPDOWNLIST | 
+                    CBS_SORT | WS_VSCROLL | WS_TABSTOP
+    PUSHBUTTON      "Zoom In", IM_ZOOM_IN, 433, 201, 38, 14
+    PUSHBUTTON      "Zoom Out", IM_ZOOM_OUT, 475, 201, 38, 14
+    SCROLLBAR       IM_X_SCROLL, 1, 283, 299, 12
+    SCROLLBAR       IM_Y_SCROLL, 302, 1, 12, 279, SBS_VERT
+    PUSHBUTTON      "Selection Functions...", SEL_FCNS, 322, 283, 76, 14
+    PUSHBUTTON      "Analysis Functions...", ANL_FNCS, 402, 283, 76, 14
+    PUSHBUTTON      "Illuminate", IMAGE_ILLUMINATE, 326, 222, 40, 14
+    PUSHBUTTON      "Load Next", IMAGE_LOAD_NEXT, 370, 222, 40, 14
+    PUSHBUTTON      "Inv. FFT", IMAGE_IFFT, 362, 266, 35, 14
+    PUSHBUTTON      "Enhance", IMAGE_ENHANCE, 472, 301, 40, 14
+    PUSHBUTTON      "Load Prev", IMAGE_LOAD_PREV, 415, 222, 40, 14
+    CONTROL         "Auto Illuminate", IMAGE_AUTO_ILLUMINATE, "Button", 
+                    BS_AUTOCHECKBOX | WS_TABSTOP, 461, 218, 74, 10
+    EDITTEXT        DRIFT_A_VALUE, 338, 169, 32, 12, ES_AUTOHSCROLL
+    EDITTEXT        DRIFT_C_VALUE, 442, 169, 32, 12, ES_AUTOHSCROLL
+    EDITTEXT        DRIFT_B_VALUE, 395, 169, 32, 12, ES_AUTOHSCROLL
+    PUSHBUTTON      "Vertical Scale", IMAGE_VSCALE, 323, 301, 58, 14
+    EDITTEXT        SMOOTH01, 477, 84, 24, 12, ES_AUTOHSCROLL
+    EDITTEXT        SMOOTH_11, 453, 84, 24, 12, ES_AUTOHSCROLL
+    PUSHBUTTON      "Grid", IMAGE_GRID, 384, 301, 40, 14
+    PUSHBUTTON      "Counting", SUB_EXIT, 428, 301, 40, 14
+    PUSHBUTTON      "Subtract", IMAGE_SUBTRACT, 378, 111, 40, 14
+    PUSHBUTTON      "Comments", IMAGE_COMMENTS, 403, 249, 40, 14
+    CONTROL         "Auto Info", IMAGE_AUTO_INFO, "Button", BS_AUTOCHECKBOX | 
+                    WS_TABSTOP, 461, 231, 58, 10
+    PUSHBUTTON      "Print", IMAGE_PRINT, 481, 247, 40, 14
+END
+
+MTESTDLG DIALOG FIXED 299, 55, 160, 100
+STYLE WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_SYSMENU
+CAPTION "Test"
+FONT 8, "MS Sans Serif"
+BEGIN
+    PUSHBUTTON      "Push", TEST_BUTTON, 13, 23, 40, 14
+    PUSHBUTTON      "exit", TEST_EXIT, 76, 23, 40, 14
+END
+
+PALDLG DIALOG FIXED 318, 228, 191, 116
+STYLE WS_POPUP | WS_VISIBLE | WS_CAPTION
+CAPTION "Palette Functions"
+FONT 8, "Times New Roman"
+BEGIN
+    PUSHBUTTON      "Load", LOAD_PAL, 91, 58, 28, 14
+    PUSHBUTTON      "Save", SAVE_PAL, 125, 58, 28, 14
+    PUSHBUTTON      "Animate", ANIMATE, 5, 58, 40, 14
+    PUSHBUTTON      "Brighten", BRIGHTEN, 5, 15, 40, 14
+    PUSHBUTTON      "Darken", DARKEN, 51, 15, 40, 14
+    PUSHBUTTON      "Gamma", GAMMA, 97, 32, 40, 14
+    EDITTEXT        GAMMA_VALUE, 143, 34, 32, 12, ES_AUTOHSCROLL
+    LTEXT           "Contrast:", READ_1_IMAGE, 97, 4, 39, 8
+    PUSHBUTTON      "Increase", CONTRAST_INC, 97, 15, 40, 14
+    PUSHBUTTON      "Decrease", CONTRAST_DEC, 143, 15, 40, 14
+    EDITTEXT        ANIMATE_DELAY, 53, 61, 17, 11, ES_AUTOHSCROLL
+    LTEXT           "ms", STEP_VELOCITY, 73, 62, 17, 8
+    LTEXT           "Delay", IMAGE_X_SCROLL, 53, 52, 20, 8
+    PUSHBUTTON      "Clip 10%", CLIP, 5, 32, 40, 14
+    PUSHBUTTON      "Exit", PAL_EXIT, 159, 58, 28, 14
+    PUSHBUTTON      "Unclip", UNCLIP, 51, 32, 40, 14
+    PUSHBUTTON      "Equalize", EQUALIZE, 97, 80, 40, 14
+    PUSHBUTTON      "Histogram", HISTOGRAM, 5, 80, 40, 14
+    PUSHBUTTON      "Clip to Hist.", CLIP_TO_HIST, 51, 80, 40, 14
+    PUSHBUTTON      "Unequalize", UNEQUALIZE, 143, 80, 40, 14
+    PUSHBUTTON      "Rand. Pal.", RANDPAL, 5, 99, 40, 14
+    PUSHBUTTON      "Rand. 1", RANDOM_1, 51, 99, 40, 14
+END
+
+IODLG DIALOG FIXED 328, -85, 169, 379
+STYLE DS_MODALFRAME | WS_POPUP | WS_VISIBLE | WS_CAPTION
+CAPTION "IO Functions"
+FONT 8, "Times New Roman"
+BEGIN
+    GROUPBOX        "Positioning", CONTROLS, 1, 6, 166, 67
+    CONTROL         "X", IO_X, "Button", BS_AUTORADIOBUTTON | WS_GROUP, 9, 
+                    21, 17, 10
+    CONTROL         "Y", IO_Y, "Button", BS_AUTORADIOBUTTON, 32, 21, 17, 10
+    CONTROL         "Z", IO_Z, "Button", BS_AUTORADIOBUTTON, 55, 21, 17, 10
+    CONTROL         "Y", IO_Y_OFFSET, "Button", BS_AUTORADIOBUTTON | 
+                    WS_GROUP, 32, 88, 17, 10
+    CONTROL         "Z", IO_Z_OFFSET, "Button", BS_AUTORADIOBUTTON, 55, 88, 
+                    17, 10
+    CONTROL         "X", IO_X_OFFSET, "Button", BS_AUTORADIOBUTTON, 9, 88, 
+                    17, 10
+    LTEXT           "Channel:", TIP_CONTROLS, 81, 22, 34, 8
+    LTEXT           "", Y_RANGE_5, 125, 22, 20, 8
+    LTEXT           "", IO_POS_CH, 120, 22, 20, 8
+    LTEXT           "Range:", Y_RANGE_10, 9, 36, 32, 8
+    CONTROL         "± 5 V", IO_POS_RANGE_5, "Button", BS_AUTORADIOBUTTON | 
+                    WS_GROUP, 47, 35, 33, 10
+    CONTROL         "± 10 V", IO_POS_RANGE_10, "Button", BS_AUTORADIOBUTTON, 
+                    86, 35, 36, 10
+    EDITTEXT        IO_POS_BITS, 5, 58, 22, 12, ES_AUTOHSCROLL | WS_GROUP
+    SCROLLBAR       IO_POS_SCROLL, 98, 58, 57, 12
+    LTEXT           "Bits", TIP_II, 8, 48, 20, 8
+    EDITTEXT        IO_POS_VOLTS, 34, 58, 32, 12, ES_AUTOHSCROLL
+    LTEXT           "Voltage", SCAN_COMMENT, 38, 48, 25, 8
+    GROUPBOX        "Offsets", Z_RANGE_5, 1, 73, 166, 67
+    LTEXT           "Channel:", Z_RANGE_10, 81, 89, 34, 8
+    LTEXT           "", X_OFFSET_RANGE_5, 125, 89, 20, 8
+    LTEXT           "", IO_OFFSET_CH, 120, 89, 20, 8
+    LTEXT           "Range:", X_OFFSET_RANGE_10, 9, 103, 32, 8
+    CONTROL         "± 5 V", IO_OFFSET_RANGE_5, "Button", BS_AUTORADIOBUTTON | 
+                    WS_GROUP, 47, 102, 33, 10
+    CONTROL         "± 10 V", IO_OFFSET_RANGE_10, "Button", 
+                    BS_AUTORADIOBUTTON, 86, 102, 36, 10
+    EDITTEXT        IO_OFFSET_BITS, 5, 125, 22, 12, ES_AUTOHSCROLL | 
+                    WS_GROUP
+    SCROLLBAR       IO_OFFSET_SCROLL, 100, 125, 55, 12
+    LTEXT           "Bits", Y_OFFSET_RANGE_5, 8, 115, 20, 8
+    EDITTEXT        IO_OFFSET_VOLTS, 34, 125, 32, 12, ES_AUTOHSCROLL
+    LTEXT           "Voltage", Y_OFFSET_RANGE_10, 37, 115, 26, 8
+    LTEXT           "Z", -1, 1, 163, 7, 8
+    CONTROL         "0.1", IO_Z_01, "Button", BS_AUTORADIOBUTTON | 
+                    WS_TABSTOP, 11, 162, 21, 10
+    CONTROL         "1.0", IO_Z_1, "Button", BS_AUTORADIOBUTTON | WS_TABSTOP, 
+                    35, 162, 21, 10
+    CONTROL         "10", IO_Z_10, "Button", BS_AUTORADIOBUTTON | WS_TABSTOP, 
+                    59, 162, 21, 10
+    LTEXT           "Z2", -1, 86, 163, 9, 8
+    CONTROL         "0.1", IO_Z2_01, "Button", BS_AUTORADIOBUTTON | 
+                    WS_TABSTOP, 96, 162, 21, 10
+    CONTROL         "1.0", IO_Z2_1, "Button", BS_AUTORADIOBUTTON | 
+                    WS_TABSTOP, 120, 162, 21, 10
+    CONTROL         "10", IO_Z2_10, "Button", BS_AUTORADIOBUTTON | 
+                    WS_TABSTOP, 144, 162, 21, 10
+    GROUPBOX        "Gains", Z_OFFSET_RANGE_5, 0, 140, 167, 37
+    LTEXT           "X", -1, 1, 152, 7, 8
+    CONTROL         "0.1", IO_X_01, "Button", BS_AUTORADIOBUTTON | 
+                    WS_TABSTOP, 11, 151, 21, 10
+    CONTROL         "1.0", IO_X_1, "Button", BS_AUTORADIOBUTTON | WS_TABSTOP, 
+                    35, 151, 21, 10
+    CONTROL         "10", IO_X_10, "Button", BS_AUTORADIOBUTTON | WS_TABSTOP, 
+                    59, 151, 21, 10
+    LTEXT           "Y", -1, 86, 152, 7, 8
+    CONTROL         "0.1", IO_Y_01, "Button", BS_AUTORADIOBUTTON | 
+                    WS_TABSTOP, 96, 151, 21, 10
+    CONTROL         "1.0", IO_Y_1, "Button", BS_AUTORADIOBUTTON | WS_TABSTOP, 
+                    120, 151, 21, 10
+    CONTROL         "10", IO_Y_10, "Button", BS_AUTORADIOBUTTON | WS_TABSTOP, 
+                    144, 151, 21, 10
+    LTEXT           "Feedback:", Z_OFFSET_RANGE_10, 10, 331, 39, 8
+    PUSHBUTTON      "Send", IO_POS_SEND, 125, 33, 35, 14
+    PUSHBUTTON      "Send", IO_OFFSET_SEND, 126, 100, 35, 14
+    EDITTEXT        IO_POS_ANGS, 70, 58, 23, 12, ES_AUTOHSCROLL | 
+                    ES_READONLY
+    EDITTEXT        IO_OFFSET_ANGS, 71, 125, 23, 12, ES_AUTOHSCROLL | 
+                    ES_READONLY
+    LTEXT           "Angs.", X_RANGE_10, 72, 49, 19, 8
+    LTEXT           "Angs.", PRE_SCAN_CONTROLS, 73, 116, 19, 8
+    LTEXT           "Movement:", O_CH_4, 6, 206, 41, 8, NOT WS_GROUP
+    PUSHBUTTON      "Defaults", IO_DEFAULTS, 110, 325, 59, 14
+    PUSHBUTTON      "Exit", IO_EXIT, 143, 343, 26, 14
+    CONTROL         "Off", IO_FEEDBACK_OFF, "Button", BS_AUTORADIOBUTTON | 
+                    WS_GROUP, 77, 331, 27, 10
+    CONTROL         "On", IO_FEEDBACK_ON, "Button", BS_AUTORADIOBUTTON, 53, 
+                    331, 21, 10
+    CONTROL         "Off", IO_RETRACT_OFF, "Button", BS_AUTORADIOBUTTON | 
+                    WS_GROUP, 77, 346, 27, 10
+    CONTROL         "On", IO_RETRACT_ON, "Button", BS_AUTORADIOBUTTON, 53, 
+                    346, 21, 10
+    LTEXT           "Retract:", 453, 10, 347, 36, 8
+    GROUPBOX        "Tip Movement", O_CH_1, 0, 321, 106, 37, WS_GROUP
+    EDITTEXT        TIP_CURRENT_RANGE_TEXT, 66, 291, 54, 8, ES_AUTOHSCROLL | 
+                    ES_NOHIDESEL | ES_OEMCONVERT | ES_READONLY | NOT 
+                    WS_BORDER
+    LTEXT           "PreAmp Gain", IMAGE_Y_OFFSET, 22, 269, 45, 8
+    LTEXT           "NanoAmps", TIP_STEP_UP, 11, 291, 35, 8
+    LTEXT           "I SET Bits", TIP_STEP_DOWN, 145, 283, 20, 17
+    EDITTEXT        TIP_CURRENT_AMPS_EDIT, 11, 301, 30, 12, ES_AUTOHSCROLL
+    LTEXT           "(10th powers)", TIP_ACCEL, 22, 276, 45, 8
+    CONTROL         "10", TIP_CURRENT_GAIN_10, "Button", BS_AUTORADIOBUTTON | 
+                    WS_GROUP, 86, 277, 25, 10
+    CONTROL         "9", TIP_CURRENT_GAIN_9, "Button", BS_AUTORADIOBUTTON, 
+                    116, 267, 23, 10
+    CONTROL         "8", TIP_CURRENT_GAIN_8, "Button", BS_AUTORADIOBUTTON, 
+                    86, 267, 26, 10
+    SCROLLBAR       TIP_CURRENT_SCROLL, 53, 301, 77, 12, WS_GROUP
+    EDITTEXT        TIP_CURRENT_BITS_EDIT, 140, 301, 22, 12, ES_AUTOHSCROLL
+    GROUPBOX        "Tip Current", TIP_CURRENT, 0, 257, 169, 64, WS_GROUP
+    LTEXT           "Voltage", 470, 41, 229, 32, 8
+    EDITTEXT        SAMPLE_BIAS_VOLTS_EDIT, 41, 239, 32, 12, ES_AUTOHSCROLL
+    LTEXT           "Bits", O_CH_4, 15, 229, 20, 8
+    SCROLLBAR       SAMPLE_BIAS_SCROLL, 85, 239, 73, 12
+    EDITTEXT        SAMPLE_BIAS_BITS_EDIT, 12, 239, 22, 12, ES_AUTOHSCROLL
+    GROUPBOX        "Sample Bias", SAMPLE_BIAS_VOLTS, 0, 219, 166, 35
+    CONTROL         "Fine", IO_FINE, "Button", BS_AUTORADIOBUTTON | WS_GROUP, 
+                    105, 205, 39, 10
+    CONTROL         "Coarse", IO_COARSE, "Button", BS_AUTORADIOBUTTON, 53, 
+                    205, 39, 10
+    CONTROL         "Rotate", IO_ROTATE, "Button", BS_AUTORADIOBUTTON | 
+                    WS_GROUP, 105, 195, 39, 10
+    CONTROL         "Translate", IO_TRANSLATE, "Button", BS_AUTORADIOBUTTON, 
+                    53, 195, 49, 10
+    GROUPBOX        "Sample Movement", O_CH_2, 0, 182, 166, 37, WS_GROUP
+    LTEXT           "Mode:", O_CH_3, 7, 195, 28, 8, NOT WS_GROUP
+    PUSHBUTTON      "Reinit", IO_REINIT, 110, 343, 26, 14
+    PUSHBUTTON      "Bias Square Wave", BIAS_SQUARE_WAVE, 1, 365, 79, 14
+    LTEXT           "Delay:", SCAN_FREQ_LOW, 90, 367, 24, 8
+    EDITTEXT        IO_SQUARE_DELAY, 117, 364, 32, 12, ES_AUTOHSCROLL
+    LTEXT           "µs", SCAN_FREQ_MED, 149, 366, 20, 8
+END
+
+OSCILLDLG DIALOG FIXED 17, 42, 491, 200
+STYLE DS_MODALFRAME | WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_SYSMENU
+CAPTION "Oscilloscope"
+FONT 8, "Times New Roman"
+BEGIN
+    CONTROL         "", 453, "Static", SS_BLACKFRAME, 8, 8, 170, 170
+    CONTROL         "Sample", O_CH_0, "Button", BS_AUTOCHECKBOX | WS_TABSTOP, 
+                    182, 24, 44, 10
+    EDITTEXT        SAMPLE_RATE, 186, 158, 32, 12, ES_AUTOHSCROLL | 
+                    ES_READONLY
+    LTEXT           "Lower (V):", 477, 251, 13, 37, 8
+    EDITTEXT        O_LOWER_V_0, 234, 24, 29, 12, ES_AUTOHSCROLL
+    LTEXT           "Higher (V):", 478, 329, 14, 41, 8
+    EDITTEXT        O_HIGHER_V_0, 321, 24, 29, 12, ES_AUTOHSCROLL
+    SCROLLBAR       O_HIGHER_SCROLL_0, 352, 25, 53, 11
+    GROUPBOX        "Horizontal Scale", 483, 243, 145, 98, 40
+    LTEXT           "Time per division (µs):", 484, 249, 156, 81, 8
+    EDITTEXT        TIME_PER_DIVISION, 253, 168, 32, 12, ES_AUTOHSCROLL
+    SCROLLBAR       TIME_PER_DIVISION_SCROLL, 291, 169, 48, 11
+    PUSHBUTTON      "Start", O_START, 186, 186, 40, 14
+    PUSHBUTTON      "Stop", O_STOP, 231, 186, 40, 14
+    PUSHBUTTON      "Exit", O_EXIT, 422, 186, 40, 14
+    SCROLLBAR       O_SCREEN_SCROLL, 8, 183, 170, 11
+    GROUPBOX        "Channel 0 (Black)", TIP_OSCILLOSCOPE, 180, 7, 310, 34
+    SCROLLBAR       O_LOWER_SCROLL_0, 265, 25, 53, 11
+    CONTROL         "Sample", O_CH_1, "Button", BS_AUTOCHECKBOX | WS_TABSTOP, 
+                    182, 59, 44, 10
+    LTEXT           "Lower (V):", PRE_SCAN_OSCILLOSCOPE, 251, 48, 37, 8
+    EDITTEXT        O_LOWER_V_1, 234, 59, 29, 12, ES_AUTOHSCROLL
+    LTEXT           "Higher (V):", UNCLIP, 329, 49, 41, 8
+    EDITTEXT        O_HIGHER_V_1, 321, 59, 29, 12, ES_AUTOHSCROLL
+    SCROLLBAR       O_HIGHER_SCROLL_1, 352, 60, 53, 11
+    GROUPBOX        "Channel 1 (Red)", EQUALIZE, 180, 42, 310, 34
+    SCROLLBAR       O_LOWER_SCROLL_1, 265, 60, 53, 11
+    CONTROL         "Sample", O_CH_2, "Button", BS_AUTOCHECKBOX | WS_TABSTOP, 
+                    182, 93, 44, 10
+    LTEXT           "Lower (V):", ANIMATE, 251, 82, 37, 8
+    EDITTEXT        O_LOWER_V_2, 234, 93, 29, 12, ES_AUTOHSCROLL
+    LTEXT           "Higher (V):", HISTOGRAM, 329, 83, 41, 8
+    EDITTEXT        O_HIGHER_V_2, 321, 93, 29, 12, ES_AUTOHSCROLL
+    SCROLLBAR       O_HIGHER_SCROLL_2, 352, 94, 53, 11
+    GROUPBOX        "Channel 2 (Green)", CLIP_TO_HIST, 180, 76, 310, 34
+    SCROLLBAR       O_LOWER_SCROLL_2, 265, 94, 53, 11
+    CONTROL         "Sample", O_CH_3, "Button", BS_AUTOCHECKBOX | WS_TABSTOP, 
+                    182, 127, 44, 10
+    LTEXT           "Lower (V):", UNEQUALIZE, 251, 116, 37, 8
+    EDITTEXT        O_LOWER_V_3, 234, 127, 29, 12, ES_AUTOHSCROLL
+    LTEXT           "Higher (V):", RANDPAL, 329, 117, 41, 8
+    EDITTEXT        O_HIGHER_V_3, 321, 127, 29, 12, ES_AUTOHSCROLL
+    SCROLLBAR       O_HIGHER_SCROLL_3, 352, 128, 53, 11
+    GROUPBOX        "Channel 3 (Blue)", FILTER_LIST, 180, 110, 310, 34
+    SCROLLBAR       O_LOWER_SCROLL_3, 265, 128, 53, 11
+    LTEXT           "Offset (V):", IO_REINIT, 410, 14, 38, 8
+    EDITTEXT        O_OFFSET_0, 408, 24, 22, 12, ES_AUTOHSCROLL
+    SCROLLBAR       O_OFFSET_0_SCROLL, 434, 25, 53, 11
+    LTEXT           "Offset (V):", M_SCREEN_SCROLL, 410, 49, 38, 8
+    EDITTEXT        O_OFFSET_1, 408, 59, 22, 12, ES_AUTOHSCROLL
+    SCROLLBAR       O_OFFSET_1_SCROLL, 434, 60, 53, 11
+    LTEXT           "Offset (V):", M_PRINT, 410, 83, 38, 8
+    EDITTEXT        O_OFFSET_2, 408, 93, 22, 12, ES_AUTOHSCROLL
+    SCROLLBAR       O_OFFSET_2_SCROLL, 434, 94, 53, 11
+    LTEXT           "Offset (V):", M_5V, 410, 117, 38, 8
+    EDITTEXT        O_OFFSET_3, 408, 127, 22, 12, ES_AUTOHSCROLL
+    SCROLLBAR       O_OFFSET_3_SCROLL, 434, 128, 53, 11
+    EDITTEXT        O_TRIGGER_VALUE, 363, 161, 28, 12, ES_AUTOHSCROLL
+    SCROLLBAR       O_TRIGGER_SCROLL, 420, 161, 71, 11
+    CONTROL         "Trigger", O_TRIGGER, "Button", BS_AUTOCHECKBOX | 
+                    WS_TABSTOP, 363, 149, 40, 10
+    CONTROL         "0", O_TRIG_CH_0, "Button", BS_AUTORADIOBUTTON | 
+                    WS_GROUP, 397, 174, 20, 10
+    CONTROL         "1", O_TRIG_CH_1, "Button", BS_AUTORADIOBUTTON, 421, 174, 
+                    20, 10
+    CONTROL         "2", O_TRIG_CH_2, "Button", BS_AUTORADIOBUTTON, 445, 174, 
+                    20, 10
+    CONTROL         "3", O_TRIG_CH_3, "Button", BS_AUTORADIOBUTTON, 470, 174, 
+                    20, 10
+    LTEXT           "Sampling Rate:", M_10V, 186, 146, 52, 8
+    LTEXT           "µs", M_MIN_RANGE, 223, 161, 13, 8
+    LTEXT           "V", SCAN_FREQ_LOW, 398, 162, 12, 8
+    LTEXT           "Channel:", IO_SQUARE_DELAY, 363, 175, 32, 8
+END
+
+MASSDLG DIALOG FIXED 14, 22, 479, 253
+STYLE DS_MODALFRAME | WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_SYSMENU
+CAPTION "Mass Spectrometer"
+FONT 8, "Times New Roman"
+BEGIN
+    CONTROL         "", 453, "Static", SS_BLACKFRAME, 8, 8, 170, 170
+    PUSHBUTTON      "Exit", M_EXIT, 435, 235, 40, 14
+    SCROLLBAR       M_SCREEN_SCROLL, 8, 189, 170, 11
+    EDITTEXT        M_MIN_RANGE, 242, 26, 32, 12, ES_AUTOHSCROLL | WS_GROUP
+    GROUPBOX        "Scan Range", SCAN_FREQ_LOW, 192, 10, 155, 60
+    LTEXT           "Min (AMU)", IO_SQUARE_DELAY, 201, 28, 37, 8
+    SCROLLBAR       M_MIN_SCROLL, 291, 26, 48, 12
+    EDITTEXT        M_MAX_RANGE, 242, 52, 32, 12, ES_AUTOHSCROLL
+    LTEXT           "Max (AMU)", SCAN_FREQ_MED, 201, 54, 37, 8
+    SCROLLBAR       M_MAX_SCROLL, 291, 52, 48, 12
+    GROUPBOX        "Scan Speed", SCAN_FREQ_HIGH, 192, 74, 154, 36
+    EDITTEXT        M_SPEED, 195, 91, 32, 12, ES_AUTOHSCROLL
+    LTEXT           "AMU/s", TIP_UP_DEFAULTS, 234, 93, 25, 8
+    SCROLLBAR       M_AMU_SCROLL, 274, 91, 65, 12
+    PUSHBUTTON      "Zoom In", M_ZOOM_IN, 20, 209, 40, 14
+    GROUPBOX        "Channels", TIP_DOWN_DEFAULTS, 192, 115, 154, 28, 
+                    WS_GROUP
+    EDITTEXT        M_INPUT_CH, 245, 127, 20, 12, ES_AUTOHSCROLL
+    EDITTEXT        M_OUTPUT_CH, 317, 127, 20, 12, ES_AUTOHSCROLL
+    LTEXT           "Input", SEL_FCNS, 199, 129, 36, 8
+    LTEXT           "Output", IM_X_SCROLL, 277, 129, 36, 8
+    PUSHBUTTON      "Scan/Stop", M_SCAN, 193, 235, 58, 14
+    GROUPBOX        "Pointer 1 (Blue)", CRASH_TOLERANCE, 355, 10, 120, 67
+    EDITTEXT        M_P1_MASS, 406, 23, 19, 12, ES_AUTOHSCROLL
+    EDITTEXT        M_P1_PRESS, 433, 62, 32, 12, ES_AUTOHSCROLL | 
+                    ES_READONLY
+    LTEXT           "Mass (AMU)", TIP_NUM_GIANT, 362, 25, 42, 8
+    LTEXT           "Partial Pressure", TIP_BABY_SIZE, 362, 64, 59, 8
+    GROUPBOX        "Pointer 2 (Red)", TIP_GIANT_SCROLL, 355, 78, 120, 67
+    EDITTEXT        M_P2_MASS, 406, 89, 19, 12, ES_AUTOHSCROLL
+    EDITTEXT        M_P2_PRESS, 432, 126, 32, 12, ES_AUTOHSCROLL | 
+                    ES_READONLY
+    LTEXT           "Mass (AMU)", TIP_BABY_SCROLL, 361, 91, 41, 8
+    LTEXT           "Partial Pressure", HEATER_TARGET_CURRENT, 361, 128, 59, 
+                    8
+    LTEXT           "Integral", TIP_STATUS, 362, 203, 31, 10
+    EDITTEXT        M_INTEGRAL, 406, 201, 32, 12, ES_AUTOHSCROLL | 
+                    ES_READONLY
+    PUSHBUTTON      "Save", M_SAVE, 332, 235, 40, 14
+    PUSHBUTTON      "Load", M_LOAD, 377, 235, 40, 14
+    SCROLLBAR       M_P1_SCROLL, 428, 23, 44, 12
+    SCROLLBAR       M_P2_SCROLL, 428, 89, 44, 12
+    PUSHBUTTON      "Zoom Out", M_ZOOM_OUT, 71, 209, 40, 14
+    LTEXT           "Calibrate to:", IM_BIG_SMALL, 361, 108, 43, 8
+    EDITTEXT        M_P2_CALIB, 406, 106, 19, 12, ES_AUTOHSCROLL
+    PUSHBUTTON      "Find Peak", M_P2_PEAK, 430, 105, 40, 14
+    LTEXT           "Calibrate to:", TIP_TUNNEL_BITS, 361, 43, 43, 8
+    EDITTEXT        M_P1_CALIB, 406, 41, 19, 12, ES_AUTOHSCROLL
+    PUSHBUTTON      "Find Peak", M_P1_PEAK, 430, 40, 40, 14
+    PUSHBUTTON      "Print", M_PRINT, 286, 235, 40, 14
+    PUSHBUTTON      "Calibrate", M_CALIBRATE, 289, 197, 53, 14
+    PUSHBUTTON      "Zoom To Peak", M_ZOOM_PEAK, 293, 163, 50, 14
+    GROUPBOX        "Vertical Scale", TIP_TUNNEL_SCROLL, 193, 148, 154, 40
+    EDITTEXT        M_V_SCALE, 203, 164, 32, 12, ES_AUTOHSCROLL
+    SCROLLBAR       M_V_SCALE_SCROLL, 238, 164, 48, 12
+    PUSHBUTTON      "Comment", M_COMMENT, 139, 210, 40, 14
+    GROUPBOX        "Spectrometer Scale", CRASH_DO_NOTHING, 355, 148, 120, 
+                    40
+    LTEXT           "10", TIP_TUNNEL_VOLTS, 364, 174, 11, 8
+    EDITTEXT        M_SPEC_SCALE, 380, 164, 21, 12, ES_AUTOHSCROLL
+    LTEXT           "---", CRASH_STOP, 369, 166, 8, 8
+    LTEXT           "Torr", TIP_STOP, 413, 174, 20, 8
+    GROUPBOX        "Calibration", CRASH_AUTO_Z, 193, 190, 154, 40
+    LTEXT           "Slope", TIP_PASS_NUM, 201, 203, 20, 8
+    LTEXT           "Intercept", HEATER_TARGET_SCROLL, 203, 218, 34, 8
+    LTEXT           "", M_SLOPE, 241, 204, 35, 8
+    LTEXT           "", M_INTERCEPT, 241, 217, 35, 8
+    GROUPBOX        "Integral", CRASH_MINMAX_Z, 355, 190, 120, 40
+    LTEXT           "Background", HEATER_INIT_RAMP, 362, 217, 42, 8
+    EDITTEXT        M_BACKGROUND, 406, 215, 32, 12, ES_AUTOHSCROLL | 
+                    ES_READONLY
+    PUSHBUTTON      "Find", M_BACK_FIND, 442, 214, 27, 14
+    PUSHBUTTON      "Load Current", M_LOAD_CALIB, 289, 212, 53, 14
+END
+
+HEATERDLG DIALOG FIXED 61, 21, 402, 228
+STYLE DS_MODALFRAME | WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_SYSMENU
+CAPTION "Heater Control"
+FONT 8, "MS Sans Serif"
+BEGIN
+    GROUPBOX        "Initial Ramp", SEL_FCNS, 199, 2, 202, 53
+    LTEXT           "Target Emission Current:", IM_X_SCROLL, 208, 38, 90, 8
+    EDITTEXT        HEATER_TARGET_CURRENT, 297, 36, 32, 12, ES_AUTOHSCROLL
+    LTEXT           "mA", IM_BIG_SMALL, 333, 38, 15, 8
+    SCROLLBAR       HEATER_TARGET_SCROLL, 349, 37, 48, 11
+    LTEXT           "Voltage Ramp:", CRASH_MINMAX_Z, 209, 20, 83, 8
+    EDITTEXT        HEATER_INIT_RAMP, 297, 18, 32, 12, ES_AUTOHSCROLL
+    LTEXT           "V/s", DIGITAL_ABORT, 333, 20, 13, 8
+    SCROLLBAR       HEATER_INIT_RAMP_SCROLL, 349, 19, 48, 11
+    GROUPBOX        "Heating Time", IM_Y_SCROLL, 199, 61, 202, 54
+    LTEXT           "Hold Target Emission for", IM_ZOOM_IN, 208, 80, 94, 8
+    EDITTEXT        HEATER_TIME, 297, 78, 32, 12, ES_AUTOHSCROLL
+    LTEXT           "s", IM_ZOOM_OUT, 336, 80, 10, 8
+    SCROLLBAR       HEATER_TIME_SCROLL, 348, 79, 48, 11
+    GROUPBOX        "Cool Down", DIGITAL_MAX_TRY, 199, 118, 202, 40
+    LTEXT           "Voltage Ramp:", RANDOM_1, 207, 138, 83, 8
+    EDITTEXT        HEATER_COOL_RAMP, 295, 136, 32, 12, ES_AUTOHSCROLL
+    LTEXT           "V/s", Z_OFFSET_CRASH, 332, 138, 13, 8
+    SCROLLBAR       HEATER_COOL_RAMP_SCROLL, 347, 137, 48, 11
+    CONTROL         "", 453, "Static", SS_BLACKFRAME, 8, 8, 170, 170
+    LTEXT           "Status:", Z_OFFSET_AUTO_ABOVE, 0, 198, 29, 8
+    LTEXT           "", HEATER_STATUS, 41, 198, 160, 8
+    PUSHBUTTON      "Save", HEATER_SAVE, 205, 193, 40, 14
+    PUSHBUTTON      "Load", HEATER_LOAD, 205, 212, 40, 14
+    PUSHBUTTON      "Exit", HEATER_EXIT, 352, 214, 40, 14
+    PUSHBUTTON      "Start/Stop", HEATER_START_STOP, 266, 193, 50, 14
+    LTEXT           "Check Every", Z_OFFSET_AUTO_BELOW, 209, 100, 83, 8
+    EDITTEXT        HEATER_CHECK, 297, 98, 32, 12, ES_AUTOHSCROLL
+    LTEXT           "ms", DEP_BOX, 332, 100, 14, 8
+    SCROLLBAR       HEATER_CHECK_SCROLL, 348, 99, 48, 11
+    PUSHBUTTON      "Comment", HEATER_COMMENT, 266, 212, 50, 14
+    GROUPBOX        "I/O Channels:", SEL_POINTS, 199, 160, 202, 31
+    LTEXT           "Voltage Control ", SEL_LINE, 207, 176, 58, 8
+    EDITTEXT        HEATER_VOLTAGE_CH, 267, 174, 17, 12, ES_AUTOHSCROLL
+    LTEXT           "Temp.", SEL_SQUARE, 352, 176, 24, 8
+    EDITTEXT        HEATER_TEMP_CH, 381, 174, 17, 12, ES_AUTOHSCROLL
+    LTEXT           "Emiss. Curr.", SEL_CIRCLE, 290, 176, 44, 8
+    EDITTEXT        HEATER_CURRENT_CH, 333, 174, 17, 12, ES_AUTOHSCROLL
+END
+
+SELDLG DIALOG FIXED 341, 0, 206, 143
+STYLE WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_SYSMENU
+CAPTION "Selection Functions"
+FONT 8, "Times New Roman"
+BEGIN
+    GROUPBOX        "Selection Type", DEP_BOX, 123, 0, 77, 60
+    CONTROL         "Points", SEL_POINTS, "Button", BS_AUTORADIOBUTTON | 
+                    WS_GROUP, 129, 15, 39, 10
+    CONTROL         "Line", SEL_LINE, "Button", BS_AUTORADIOBUTTON, 129, 25, 
+                    39, 10
+    CONTROL         "Square", SEL_SQUARE, "Button", BS_AUTORADIOBUTTON, 129, 
+                    35, 39, 10
+    CONTROL         "Circle", SEL_CIRCLE, "Button", BS_AUTORADIOBUTTON, 129, 
+                    45, 39, 10
+    CONTROL         "Constrain Transforms to Region", SEL_CONSTRAIN, 
+                    "Button", BS_AUTOCHECKBOX | WS_TABSTOP, 0, 126, 122, 10
+    PUSHBUTTON      "Exit", SEL_EXIT, 163, 121, 31, 14
+    GROUPBOX        "First Point", SCAN_PRESCAN2, 0, 0, 116, 60
+    SCROLLBAR       SEL_P1_HSCROLL, 3, 48, 100, 11
+    SCROLLBAR       SEL_P1_VSCROLL, 102, 8, 11, 40, SBS_VERT
+    EDITTEXT        SEL_P1_X_INT, 3, 19, 27, 12, ES_AUTOHSCROLL | 
+                    ES_READONLY
+    EDITTEXT        SEL_P1_X_VOLTS, 3, 34, 24, 12, ES_AUTOHSCROLL | 
+                    ES_READONLY
+    LTEXT           "V", ANL_EXIT, 90, 36, 10, 8
+    LTEXT           "X", DEP_MOV_SPEED, 10, 9, 6, 8
+    EDITTEXT        SEL_P1_Y_INT, 33, 19, 32, 12, ES_AUTOHSCROLL | 
+                    ES_READONLY
+    EDITTEXT        SEL_P1_Y_VOLTS, 33, 34, 24, 12, ES_AUTOHSCROLL | 
+                    ES_READONLY
+    LTEXT           "Y", DEP_WRI_SPEED, 40, 9, 6, 8
+    EDITTEXT        SEL_P1_Z_FLOAT, 67, 19, 33, 12, ES_AUTOHSCROLL | 
+                    ES_READONLY
+    EDITTEXT        SEL_P1_Z_VOLTS, 62, 34, 24, 12, ES_AUTOHSCROLL | 
+                    ES_READONLY
+    LTEXT           "Z", IMAGE_GRID, 69, 9, 6, 8
+    GROUPBOX        "Second Point", DEP_WRI_TIME, 0, 61, 116, 60
+    SCROLLBAR       SEL_P2_HSCROLL, 3, 109, 100, 11
+    SCROLLBAR       SEL_P2_VSCROLL, 102, 69, 11, 40, SBS_VERT
+    EDITTEXT        SEL_P2_X_INT, 3, 80, 27, 12, ES_AUTOHSCROLL | 
+                    ES_READONLY
+    EDITTEXT        SEL_P2_X_VOLTS, 3, 95, 24, 12, ES_AUTOHSCROLL | 
+                    ES_READONLY
+    LTEXT           "V", DEP_MOV_SPEED_SC, 90, 97, 10, 8
+    LTEXT           "X", DEP_WRI_SPEED_SC, 10, 70, 6, 8
+    EDITTEXT        SEL_P2_Y_INT, 33, 80, 32, 12, ES_AUTOHSCROLL | 
+                    ES_READONLY
+    EDITTEXT        SEL_P2_Y_VOLTS, 33, 95, 24, 12, ES_AUTOHSCROLL | 
+                    ES_READONLY
+    LTEXT           "Y", ANL_AVG_Z2, 40, 70, 6, 8
+    EDITTEXT        SEL_P2_Z_FLOAT, 67, 80, 33, 12, ES_AUTOHSCROLL | 
+                    ES_READONLY
+    EDITTEXT        SEL_P2_Z_VOLTS, 62, 95, 24, 12, ES_AUTOHSCROLL | 
+                    ES_READONLY
+    LTEXT           "Z", ANL_AVG_Z2_VOLTS, 69, 70, 6, 8
+    PUSHBUTTON      "Invert", SEL_INVERT, 124, 121, 31, 14
+    PUSHBUTTON      "Cut", SEL_CROP, 124, 99, 31, 14
+    PUSHBUTTON      "Max", SEL_MAX, 165, 81, 31, 14
+    PUSHBUTTON      "Min", SEL_MIN, 124, 81, 31, 14
+    PUSHBUTTON      "Sel 1/2", SEL_1_2, 124, 64, 31, 14
+    LTEXT           "", SEL_CUR_SEL, 159, 67, 14, 8
+    PUSHBUTTON      "Copy", SEL_COPY, 165, 99, 31, 14
+    PUSHBUTTON      "Lock", SEL_LOCK, 180, 64, 21, 14
+END
+
+DEPDLG DIALOG FIXED 6, 15, 562, 308
+STYLE DS_MODALFRAME | WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_SYSMENU
+CAPTION "Selective Deposition"
+FONT 8, "Times New Roman"
+BEGIN
+    CONTROL         "Other", DEP_PULSE_OTHER, "Button", BS_AUTORADIOBUTTON | 
+                    WS_GROUP, 506, 143, 40, 10
+    CONTROL         "Crash", DEP_PULSE_CRASH, "Button", BS_AUTORADIOBUTTON, 
+                    506, 128, 40, 10
+    CONTROL         "Low V", DEP_PULSE_LOW_V, "Button", BS_AUTORADIOBUTTON, 
+                    457, 143, 40, 10
+    CONTROL         "High V", DEP_PULSE_HIGH_V, "Button", BS_AUTORADIOBUTTON, 
+                    457, 128, 40, 10
+    CONTROL         "", -1, "Static", SS_BLACKFRAME | WS_GROUP, 1, 1, 299, 
+                    279
+    PUSHBUTTON      "Box", DEP_BOX, 243, 292, 40, 14
+    GROUPBOX        "Inter Step Delay (µs)", DEPOSITION, 312, 6, 132, 47
+    LTEXT           "Movement:", TIP_REMOVE, 314, 21, 40, 8
+    LTEXT           "Writing:", ANL_EXIT, 314, 38, 36, 8
+    EDITTEXT        DEP_MOV_TIME, 351, 19, 32, 12, ES_AUTOHSCROLL
+    EDITTEXT        DEP_WRI_TIME, 351, 36, 32, 12, ES_AUTOHSCROLL
+    SCROLLBAR       DEP_MOV_TIME_SC, 386, 20, 53, 11
+    SCROLLBAR       DEP_WRI_TIME_SC, 386, 37, 53, 11
+    GROUPBOX        "Bias (V)", ANL_AVG_Z2, 313, 60, 132, 47
+    LTEXT           "Movement:", ANL_AVG_Z2_VOLTS, 314, 75, 40, 8
+    LTEXT           "Writing:", SEL_LOCK, 314, 92, 36, 8
+    EDITTEXT        DEP_MOV_BIAS, 351, 73, 32, 12, ES_AUTOHSCROLL
+    EDITTEXT        DEP_WRI_BIAS, 351, 90, 32, 12, ES_AUTOHSCROLL
+    SCROLLBAR       DEP_MOV_BIAS_SC, 386, 74, 53, 11
+    SCROLLBAR       DEP_WRI_BIAS_SC, 386, 89, 53, 11
+    PUSHBUTTON      "Exit", DEP_EXIT, 519, 292, 40, 14
+    LTEXT           "Status:", SEL_CONSTRAIN, 15, 294, 28, 8
+    LTEXT           "", DEP_STATUS, 44, 294, 109, 8
+    GROUPBOX        "Current (nA)", SP_SKIP, 313, 113, 132, 47
+    LTEXT           "Movement:", SP_SKIP_SCROLL, 314, 128, 40, 8
+    LTEXT           "Writing:", SCAN_SPEC, 314, 145, 36, 8
+    EDITTEXT        DEP_MOV_CURRENT, 351, 126, 32, 12, ES_AUTOHSCROLL
+    EDITTEXT        DEP_WRI_CURRENT, 351, 143, 32, 12, ES_AUTOHSCROLL
+    SCROLLBAR       DEP_MOV_CURRENT_SCROLL, 386, 127, 53, 11
+    SCROLLBAR       DEP_WRI_CURRENT_SCROLL, 386, 142, 53, 11
+    GROUPBOX        "Deposition mode", DEP_PULSE_EXIT, 314, 164, 144, 122
+    PUSHBUTTON      "Do it!", DEP_DOIT, 305, 292, 88, 14
+    CONTROL         "Box", DEP_BOX_MODE, "Button", BS_AUTORADIOBUTTON | 
+                    WS_GROUP, 321, 179, 91, 10
+    CONTROL         "Series of Lines:", DEP_LINES_MODE, "Button", 
+                    BS_AUTORADIOBUTTON, 321, 192, 67, 10
+    CONTROL         "Poly Lines", DEP_POLY_MODE, "Button", 
+                    BS_AUTORADIOBUTTON, 318, 253, 50, 10
+    CONTROL         "Pulse", DEP_PULSE_MODE, "Button", BS_AUTORADIOBUTTON, 
+                    321, 267, 39, 10
+    EDITTEXT        DEP_NUM_LINES, 389, 191, 23, 12, ES_AUTOHSCROLL | 
+                    WS_GROUP
+    LTEXT           "Num Lines", SP_P2_VOLTS, 416, 193, 38, 8
+    LTEXT           "Max Bias (V)", SP_P2_CURR, 321, 208, 44, 8
+    EDITTEXT        DEP_MAX_BIAS, 365, 206, 32, 12, ES_AUTOHSCROLL
+    SCROLLBAR       DEP_MAX_BIAS_SCROLL, 402, 207, 53, 11
+    LTEXT           "Max I (nA)", PRESCAN_BIAS_SEND, 321, 223, 37, 8
+    EDITTEXT        DEP_MAX_I, 365, 221, 32, 12, ES_AUTOHSCROLL
+    SCROLLBAR       DEP_MAX_I_SCROLL, 402, 222, 53, 11
+    CONTROL         "Select", DEP_POLY_SELECT, "Button", BS_AUTORADIOBUTTON | 
+                    WS_GROUP, 408, 252, 39, 10
+    CONTROL         "Add", DEP_POLY_ADD, "Button", BS_AUTORADIOBUTTON, 374, 
+                    253, 30, 10
+    PUSHBUTTON      "Pulse Options", DEP_PULSE_OPTIONS, 367, 266, 79, 14
+    GROUPBOX        "Current (Black) Display (V)", GRID_SAVE, 448, 6, 111, 
+                    47
+    EDITTEXT        DEP_OSCILL_I_MIN, 477, 19, 32, 12, ES_AUTOHSCROLL
+    EDITTEXT        DEP_OSCILL_I_MAX, 477, 36, 32, 12, ES_AUTOHSCROLL
+    SCROLLBAR       DEP_OSCILL_I_MIN_SCROLL, 514, 20, 42, 11
+    SCROLLBAR       DEP_OSCILL_I_MAX_SCROLL, 514, 37, 42, 11
+    LTEXT           "Min:", SP_MEASURE_I, 453, 21, 20, 8
+    LTEXT           "Max:", SP_MEASURE_Z, 453, 38, 20, 8
+    GROUPBOX        "Z (Red) Display (V)", GRID_ANGLE_2, 449, 60, 111, 47
+    EDITTEXT        DEP_OSCILL_Z_MIN, 478, 73, 32, 12, ES_AUTOHSCROLL
+    EDITTEXT        DEP_OSCILL_Z_MAX, 478, 90, 32, 12, ES_AUTOHSCROLL
+    SCROLLBAR       DEP_OSCILL_Z_MIN_SCROLL, 515, 74, 42, 11
+    SCROLLBAR       DEP_OSCILL_Z_MAX_SCROLL, 515, 91, 42, 11
+    LTEXT           "Min:", GRID_ANGLE_2_SC, 454, 75, 20, 8
+    LTEXT           "Max:", INFO_TEMPERATURE, 454, 92, 20, 8
+    LTEXT           "Avg. Current (V):", GRID_DIST_0, 462, 174, 59, 8
+    EDITTEXT        DEP_PULSE_AVG_I, 521, 172, 40, 12, ES_AUTOHSCROLL | 
+                    ES_READONLY
+    PUSHBUTTON      "Image Manipulation", DEP_IMAGE_MANIPULATION, 417, 292, 
+                    73, 14
+    PUSHBUTTON      "Save", DEP_SAVE, 519, 222, 40, 14
+    PUSHBUTTON      "Load", DEP_LOAD, 519, 239, 40, 14
+    PUSHBUTTON      "Info", DEP_INFO, 519, 258, 40, 14
+    PUSHBUTTON      "Commnet", DEP_COMMENT, 519, 202, 40, 14
+    LTEXT           "Max Delay:", TIP_REMOVE, 322, 236, 40, 8
+    EDITTEXT        DEP_MAX_WRI_TIME, 365, 235, 32, 12, ES_AUTOHSCROLL
+    SCROLLBAR       DEP_MAX_WRI_TIME_SC, 402, 236, 53, 11
+    GROUPBOX        "Pulse Defaults", COARSE_PERIOD_GROUP, 450, 113, 110, 47
+    PUSHBUTTON      "1/4 Images", DEP_1_4_IMAGES, 465, 202, 40, 14
+END
+
+ANLDLG DIALOG FIXED 370, 183, 193, 148
+STYLE WS_VISIBLE | WS_CAPTION
+CAPTION "Analysis"
+FONT 8, "Times New Roman"
+BEGIN
+    PUSHBUTTON      "Avg. Z", ANL_AVG_Z1, 103, 9, 28, 14
+    GROUPBOX        "Delta (2-1) First Sel.", SEL_LOCK, 1, 1, 137, 69
+    EDITTEXT        ANL_DEL1_X_INT, 3, 25, 28, 12, ES_AUTOHSCROLL | 
+                    ES_READONLY
+    EDITTEXT        ANL_DEL1_X_VOLTS, 3, 40, 28, 12, ES_AUTOHSCROLL | 
+                    ES_READONLY
+    LTEXT           "X", DEP_WRI_BIAS, 14, 15, 6, 8
+    LTEXT           "Y", SUB_EXIT, 46, 15, 6, 8
+    LTEXT           "Z", DEP_WRI_TIME_SC, 79, 15, 6, 8
+    EDITTEXT        ANL_DEL1_Y_INT, 32, 25, 33, 12, ES_AUTOHSCROLL | 
+                    ES_READONLY
+    EDITTEXT        ANL_DEL1_Y_VOLTS, 32, 40, 33, 12, ES_AUTOHSCROLL | 
+                    ES_READONLY
+    EDITTEXT        ANL_DEL1_Z_FLOAT, 66, 25, 31, 12, ES_AUTOHSCROLL | 
+                    ES_READONLY
+    EDITTEXT        ANL_DEL1_Z_VOLTS, 66, 40, 31, 12, ES_AUTOHSCROLL | 
+                    ES_READONLY
+    LTEXT           "V", DEP_MOV_BIAS_SC, 140, 42, 8, 8
+    PUSHBUTTON      "Exit", ANL_EXIT, 149, 123, 40, 14
+    PUSHBUTTON      "Avg. Z", ANL_AVG_Z2, 103, 79, 28, 14
+    GROUPBOX        "Delta (2-1) Sec. Sel.", PRESCAN_SHARPEN, 1, 71, 137, 69
+    EDITTEXT        ANL_DEL2_X_INT, 3, 95, 28, 12, ES_AUTOHSCROLL | 
+                    ES_READONLY
+    EDITTEXT        ANL_DEL2_X_VOLTS, 3, 110, 28, 12, ES_AUTOHSCROLL | 
+                    ES_READONLY
+    LTEXT           "X", SEL_SEL_CHANGED, 14, 85, 6, 8
+    LTEXT           "Y", IMAGE_ILLUMINATE, 46, 85, 6, 8
+    LTEXT           "Z", SHARP_CYCLES, 79, 85, 6, 8
+    EDITTEXT        ANL_DEL2_Y_INT, 32, 95, 33, 12, ES_AUTOHSCROLL | 
+                    ES_READONLY
+    EDITTEXT        ANL_DEL2_Y_VOLTS, 32, 110, 33, 12, ES_AUTOHSCROLL | 
+                    ES_READONLY
+    EDITTEXT        ANL_DEL2_Z_FLOAT, 66, 95, 31, 12, ES_AUTOHSCROLL | 
+                    ES_READONLY
+    EDITTEXT        ANL_DEL2_Z_VOLTS, 66, 110, 31, 12, ES_AUTOHSCROLL | 
+                    ES_READONLY
+    EDITTEXT        ANL_X1_ANGS, 3, 55, 28, 12, ES_AUTOHSCROLL | ES_READONLY
+    LTEXT           "Å", IMAGE_LOAD_NEXT, 140, 56, 7, 8
+    EDITTEXT        ANL_Y1_ANGS, 32, 55, 33, 12, ES_AUTOHSCROLL | 
+                    ES_READONLY
+    EDITTEXT        ANL_Z1_ANGS, 66, 55, 31, 12, ES_AUTOHSCROLL | 
+                    ES_READONLY
+    EDITTEXT        ANL_X2_ANGS, 3, 125, 28, 12, ES_AUTOHSCROLL | 
+                    ES_READONLY
+    EDITTEXT        ANL_Y2_ANGS, 32, 125, 33, 12, ES_AUTOHSCROLL | 
+                    ES_READONLY
+    EDITTEXT        ANL_Z2_ANGS, 66, 125, 31, 12, ES_AUTOHSCROLL | 
+                    ES_READONLY
+    EDITTEXT        ANL_AVG_Z1_FLOAT, 100, 25, 35, 12, ES_AUTOHSCROLL | 
+                    ES_READONLY
+    EDITTEXT        ANL_AVG_Z1_VOLTS, 100, 40, 35, 12, ES_AUTOHSCROLL | 
+                    ES_READONLY
+    EDITTEXT        ANL_AVG_Z1_ANGS, 100, 55, 35, 12, ES_AUTOHSCROLL | 
+                    ES_READONLY
+    LTEXT           "V", PRE_SCAN_SHARPEN, 140, 114, 8, 8
+    LTEXT           "Å", SHARP_LINES, 140, 128, 7, 8
+    EDITTEXT        ANL_AVG_Z2_FLOAT, 100, 95, 35, 12, ES_AUTOHSCROLL | 
+                    ES_READONLY
+    EDITTEXT        ANL_AVG_Z2_VOLTS, 100, 110, 35, 12, ES_AUTOHSCROLL | 
+                    ES_READONLY
+    EDITTEXT        ANL_AVG_Z2_ANGS, 100, 125, 35, 12, ES_AUTOHSCROLL | 
+                    ES_READONLY
+END
+
+SHARPDLG DIALOG FIXED 121, 53, 160, 91
+STYLE DS_MODALFRAME | WS_POPUP | WS_VISIBLE | WS_CAPTION
+CAPTION "Sharpen Tip"
+FONT 8, "Times New Roman"
+BEGIN
+    LTEXT           "Cycles", IMAGE_ILLUMINATE, 7, 9, 26, 8
+    EDITTEXT        SHARP_CYCLES, 61, 7, 27, 12, ES_AUTOHSCROLL
+    SCROLLBAR       SHARP_CYCLES_SCROLL, 97, 8, 48, 11
+    LTEXT           "Lines/Cycle", IMAGE_LOAD_NEXT, 7, 26, 40, 8
+    EDITTEXT        SHARP_LINES, 61, 25, 27, 12, ES_AUTOHSCROLL
+    SCROLLBAR       SHARP_LINES_SCROLL, 97, 26, 48, 11
+    LTEXT           "1st Bias", IMAGE_LOAD_NEXT, 7, 46, 31, 8
+    LTEXT           "2nd Bias", IMAGE_FFT, 7, 63, 31, 8
+    EDITTEXT        SHARP_BIAS1, 61, 43, 27, 12, ES_AUTOHSCROLL
+    SCROLLBAR       SHARP_BIAS1_SCROLL, 97, 44, 48, 11
+    EDITTEXT        SHARP_BIAS2, 61, 61, 27, 12, ES_AUTOHSCROLL
+    SCROLLBAR       SHARP_BIAS2_SCROLL, 97, 62, 48, 11
+    PUSHBUTTON      "Exit", SHARP_EXIT, 101, 76, 40, 14
+END
+
+INFODLG DIALOG FIXED 375, -18, 188, 355
+STYLE DS_MODALFRAME | WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_SYSMENU
+CAPTION "Data Info"
+FONT 8, "Times New Roman"
+BEGIN
+    LTEXT           "Filename:", DEP_PULSE_EXIT, 4, 4, 39, 8
+    LTEXT           "File Version:", SP_SKIP, 86, 4, 47, 8
+    LTEXT           "Width:", SP_SKIP_SCROLL, 4, 17, 24, 8
+    LTEXT           "Pixels", SCAN_SPEC, 67, 17, 20, 8
+    LTEXT           "Å", DEP_MOV_CURRENT, 128, 17, 11, 8
+    LTEXT           "Step Size:", DEP_WRI_CURRENT, 4, 29, 36, 8
+    LTEXT           "X:", PRESCAN_DOSED_LANG, 5, 79, 10, 8
+    LTEXT           "Y:", DEP_MOV_CURRENT_SCROLL, 69, 79, 10, 8
+    LTEXT           "Z:", DEP_WRI_CURRENT_SCROLL, 123, 79, 9, 8
+    LTEXT           "Z Freq:", DEP_DOIT, 94, 29, 27, 8
+    LTEXT           "X offset:", DEP_BOX_MODE, 5, 93, 30, 8
+    LTEXT           "V", DEP_LINES_MODE, 67, 93, 12, 8
+    LTEXT           "Y Offset:", DEP_POLY_MODE, 99, 93, 31, 8
+    LTEXT           "V", DEP_NUM_LINES, 159, 93, 12, 8
+    LTEXT           "Scan Order and Direction:", SP_P2_VOLTS, 5, 117, 87, 8
+    LTEXT           "Preamp Gain:", SP_P2_CURR, 5, 128, 47, 8
+    LTEXT           "Current:", PRESCAN_BIAS_SEND, 73, 128, 33, 8
+    LTEXT           "Bias:", DEP_MAX_BIAS, 136, 128, 20, 8
+    LTEXT           "Z offset:", DEP_MAX_BIAS_SCROLL, 5, 107, 28, 8
+    LTEXT           "V", DEP_MAX_I, 67, 107, 12, 8
+    LTEXT           "Inter-step:", DEP_MAX_I_SCROLL, 11, 149, 39, 8
+    LTEXT           "Step:", DEP_PULSE_OPTIONS, 103, 149, 17, 8
+    LTEXT           "Inter-line:", DEP_POLY_SELECT, 11, 161, 32, 8
+    LTEXT           "Digital Feedback:", DEP_POLY_ADD, 5, 177, 59, 8
+    LTEXT           "With Tip Spacing:", DEP_MAX_WRI_TIME, 95, 177, 61, 8
+    LTEXT           "Number of Samples:", DEP_MAX_WRI_TIME_SC, 95, 188, 67, 
+                    8
+    LTEXT           "Scanning Mode:", SP_MIN_SCROLL, 5, 188, 55, 8
+    LTEXT           "Z-Offset Crash Prot. :", SP_MAX_SCROLL, 78, 107, 73, 8
+    LTEXT           "Overshot by:", SP_AMU_SCROLL, 5, 199, 42, 8
+    LTEXT           "Overshot waits:", GRID_COPY_1, 5, 211, 49, 8
+    LTEXT           "Sample Type:", SP_P1_SCROLL, 5, 226, 45, 8
+    EDITTEXT        INFO_SAMPLE_TYPE, 5, 240, 178, 12, ES_AUTOHSCROLL | 
+                    ES_READONLY
+    LTEXT           "Dosed with:", SP_P2_SCROLL, 5, 255, 36, 8
+    EDITTEXT        INFO_DOSED_WITH, 5, 266, 135, 12, ES_AUTOHSCROLL | 
+                    ES_READONLY
+    LTEXT           "Comment:", SP_MIN_RANGE, 5, 283, 37, 8
+    EDITTEXT        INFO_COMMENT, 5, 296, 178, 42, ES_MULTILINE | 
+                    ES_AUTOVSCROLL | ES_AUTOHSCROLL | ES_READONLY
+    LTEXT           "V", SP_MAX_RANGE, 175, 17, 12, 8
+    GROUPBOX        "Delays (µs):", SP_SPEED, 5, 138, 171, 35
+    EDITTEXT        INFO_DOSED_LANG, 143, 266, 32, 12, ES_AUTOHSCROLL | 
+                    ES_READONLY
+    LTEXT           "L", SP_INPUT_CH, 178, 268, 10, 8
+    LTEXT           "", INFO_FILENAME, 42, 4, 40, 8
+    LTEXT           "", INFO_VERSION, 130, 4, 20, 8
+    LTEXT           "", INFO_STEP_SIZE, 46, 29, 43, 8
+    LTEXT           "", INFO_X_GAIN, 16, 79, 45, 8
+    LTEXT           "", INFO_Y_GAIN, 79, 79, 38, 8
+    LTEXT           "", INFO_Z_GAIN, 135, 79, 47, 8
+    LTEXT           "", INFO_Z_FREQ, 123, 29, 57, 8
+    LTEXT           "", INFO_X_OFFSET, 35, 93, 28, 8
+    LTEXT           "", INFO_Y_OFFSET, 129, 93, 28, 8
+    LTEXT           "", INFO_Z_OFFSET, 34, 107, 28, 8
+    LTEXT           "", INFO_Z_CRASH_PROT, 151, 107, 34, 8
+    LTEXT           "", INFO_SCAN_ORDER, 96, 117, 92, 8
+    LTEXT           "", INFO_AMP_GAIN, 49, 128, 20, 8
+    LTEXT           "", INFO_CURRENT, 103, 128, 28, 8
+    LTEXT           "", INFO_BIAS, 156, 128, 20, 8
+    LTEXT           "", INFO_INTER_STEP_DELAY, 48, 149, 49, 8
+    LTEXT           "", INFO_STEP_DELAY, 129, 149, 34, 8
+    LTEXT           "", INFO_INTER_LINE_DELAY, 48, 160, 49, 8
+    LTEXT           "", INFO_DIGITAL_FEEDBACK, 64, 177, 20, 8
+    LTEXT           "", INFO_TIP_SPACING, 154, 177, 30, 8
+    LTEXT           "", INFO_SCAN_MODE, 57, 188, 34, 8
+    LTEXT           "", INFO_SAMPLES, 161, 188, 20, 8
+    LTEXT           "", INFO_OVERSHOT_BY, 49, 199, 139, 8
+    LTEXT           "", INFO_OVERSHOT_WAITS, 57, 211, 131, 8
+    DEFPUSHBUTTON   "Exit", INFO_EXIT, 5, 340, 177, 14
+    RTEXT           "", INFO_WIDTH_PIXELS, 30, 17, 33, 8
+    RTEXT           "", INFO_WIDTH_ANGS, 90, 17, 33, 8
+    RTEXT           "", INFO_WIDTH_VOLTS, 147, 17, 25, 8
+    LTEXT           "nA", SP_OUTPUT_CH, 124, 128, 9, 8
+    LTEXT           "V", GRID_COPY_3, 176, 128, 12, 8
+    GROUPBOX        "Gains:", GRID_COPY_4, 2, 70, 184, 22
+    LTEXT           "Temperature:", COMMENT2_EXIT, 4, 46, 46, 8
+    LTEXT           "", INFO_TEMPERATURE, 55, 46, 20, 8
+    LTEXT           "K", DEP_PULSE_CHANGE_TIME, 81, 46, 9, 8
+    LTEXT           "Dep. Filename:", COMMENT2_EDIT, 4, 58, 50, 8
+    LTEXT           "", INFO_DEP_FILENAME, 60, 58, 62, 8
+END
+
+SPECDLG DIALOG FIXED 3, 25, 572, 260
+STYLE DS_MODALFRAME | WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_SYSMENU
+CAPTION "Spectroscopy"
+FONT 8, "Times New Roman"
+BEGIN
+    CONTROL         "", 453, "Static", SS_BLACKFRAME, 8, 8, 170, 170
+    PUSHBUTTON      "Exit", SP_EXIT, 532, 239, 40, 14
+    SCROLLBAR       SP_SCREEN_SCROLL, 8, 189, 170, 11
+    EDITTEXT        SP_MIN_RANGE, 242, 26, 32, 12, ES_AUTOHSCROLL | WS_GROUP
+    GROUPBOX        "Scan Range (V)", SCAN_FREQ_LOW, 192, 10, 155, 46
+    LTEXT           "Min", IO_SQUARE_DELAY, 201, 28, 37, 8
+    SCROLLBAR       SP_MIN_SCROLL, 291, 26, 48, 12
+    EDITTEXT        SP_MAX_RANGE, 242, 39, 32, 12, ES_AUTOHSCROLL
+    LTEXT           "Max", SCAN_FREQ_MED, 201, 41, 37, 8
+    SCROLLBAR       SP_MAX_SCROLL, 291, 39, 48, 12
+    GROUPBOX        "Delay Between Bits", SCAN_FREQ_HIGH, 192, 98, 154, 36
+    EDITTEXT        SP_SPEED, 195, 115, 32, 12, ES_AUTOHSCROLL
+    LTEXT           "µs", TIP_UP_DEFAULTS, 234, 117, 25, 8
+    SCROLLBAR       SP_VOLTS_SCROLL, 251, 115, 88, 12
+    PUSHBUTTON      "Zoom In", SP_ZOOM_IN, 20, 209, 40, 14
+    GROUPBOX        "Measurement", TIP_DOWN_DEFAULTS, 192, 136, 154, 28, 
+                    WS_GROUP
+    PUSHBUTTON      "Scan/Stop", SP_SCAN, 226, 239, 58, 14
+    GROUPBOX        "Pointer 1 (Blue)", CRASH_TOLERANCE, 354, 10, 120, 47
+    EDITTEXT        SP_P1_VOLTS, 392, 23, 33, 12, ES_AUTOHSCROLL
+    EDITTEXT        SP_P1_CURR, 392, 41, 32, 12, ES_AUTOHSCROLL | 
+                    ES_READONLY
+    LTEXT           "Voltage", TIP_NUM_GIANT, 361, 25, 27, 8
+    GROUPBOX        "Pointer 2 (Red)", TIP_GIANT_SCROLL, 355, 60, 120, 47
+    LTEXT           "Integral", TIP_STATUS, 487, 29, 31, 10
+    EDITTEXT        SP_INTEGRAL, 531, 27, 32, 12, ES_AUTOHSCROLL | 
+                    ES_READONLY
+    PUSHBUTTON      "Save", SP_SAVE, 443, 239, 40, 14
+    PUSHBUTTON      "Load", SP_LOAD, 488, 239, 40, 14
+    SCROLLBAR       SP_P1_SCROLL, 428, 23, 44, 12
+    SCROLLBAR       SP_P2_SCROLL, 428, 71, 44, 12
+    PUSHBUTTON      "Zoom Out", SP_ZOOM_OUT, 71, 209, 40, 14
+    PUSHBUTTON      "Find Peak", SP_P2_PEAK, 430, 87, 40, 14
+    PUSHBUTTON      "Find Peak", SP_P1_PEAK, 430, 40, 40, 14
+    PUSHBUTTON      "Print", SP_PRINT, 397, 239, 40, 14
+    PUSHBUTTON      "Set to Max", SP_ZOOM_PEAK, 292, 186, 50, 12
+    GROUPBOX        "Vertical Scale", TIP_TUNNEL_SCROLL, 192, 166, 155, 64
+    EDITTEXT        SP_V_SCALE, 203, 187, 32, 12, ES_AUTOHSCROLL
+    SCROLLBAR       SP_V_SCALE_SCROLL, 238, 187, 48, 12
+    PUSHBUTTON      "Comment", SP_COMMENT, 139, 209, 40, 14
+    GROUPBOX        "Pre-Amp Scale", CRASH_DO_NOTHING, 482, 116, 57, 40
+    LTEXT           "10", TIP_TUNNEL_VOLTS, 491, 142, 11, 8
+    EDITTEXT        SP_PREAMP_SCALE, 507, 132, 21, 12, ES_AUTOHSCROLL | 
+                    ES_READONLY
+    GROUPBOX        "Integral", CRASH_MINMAX_Z, 480, 16, 89, 55
+    LTEXT           "Background", HEATER_INIT_RAMP, 487, 43, 42, 8
+    EDITTEXT        SP_BACKGROUND, 531, 41, 32, 12, ES_AUTOHSCROLL | 
+                    ES_READONLY
+    PUSHBUTTON      "Find", SP_BACK_FIND, 533, 55, 27, 14
+    LTEXT           "Current", SCAN_SPEC, 361, 43, 29, 8
+    EDITTEXT        SP_P2_VOLTS, 392, 71, 33, 12, ES_AUTOHSCROLL
+    EDITTEXT        SP_P2_CURR, 392, 88, 32, 12, ES_AUTOHSCROLL | 
+                    ES_READONLY
+    LTEXT           "Voltage", PRESCAN_BIAS_SEND, 361, 73, 27, 8
+    LTEXT           "Current", DEP_PULSE_OPTIONS, 361, 90, 29, 8
+    GROUPBOX        "Crash Protection", DEP_PULSE_MODE, 354, 156, 121, 55
+    GROUPBOX        "Delta Z-offset", GRID_SAVE, 355, 110, 120, 39
+    EDITTEXT        SP_DETALZ_VOLTS, 359, 131, 26, 12, ES_AUTOHSCROLL
+    SCROLLBAR       SP_DELTAZ_SCROLL, 421, 131, 51, 12
+    LTEXT           "Status:", DEP_PULSE_DURATION, 18, 231, 27, 8
+    LTEXT           "Bias:", DEP_PULSE_DURATION_SCROLL, 18, 243, 20, 8
+    LTEXT           "", SP_STATUS, 50, 231, 127, 8
+    LTEXT           "", SP_BIAS, 50, 243, 27, 8
+    LTEXT           "V", DEP_PULSE_FEEDBACK, 81, 243, 20, 8
+    PUSHBUTTON      "Set to Min", SP_ZOOM_TO_MIN, 292, 215, 50, 11
+    EDITTEXT        SP_V_SCALE_MIN, 202, 213, 32, 12, ES_AUTOHSCROLL
+    SCROLLBAR       SP_V_SCALE_MIN_SCROLL, 237, 213, 48, 12
+    LTEXT           "Max:", GRID_ANGLE_0_SC, 194, 176, 20, 8
+    LTEXT           "Min:", COMMENT2_EXIT, 194, 202, 20, 8, NOT WS_GROUP
+    GROUPBOX        "Graph", DEP_PULSE_DURATION_FIXED, 481, 73, 88, 40, 
+                    WS_GROUP
+    CONTROL         "I/V", SP_GRAPH_IV, "Button", BS_AUTORADIOBUTTON | 
+                    WS_GROUP, 488, 86, 26, 10
+    CONTROL         "dI/dV/(I/V)", SP_GRAPH_DIDV, "Button", 
+                    BS_AUTORADIOBUTTON, 488, 99, 47, 10
+    PUSHBUTTON      "Max + Center", SP_MAX_CENTER, 292, 200, 50, 12
+    PUSHBUTTON      "Prescan", SP_PRESCAN, 307, 239, 63, 14
+    EDITTEXT        SP_DELTAZ_BITS, 390, 131, 26, 12, ES_AUTOHSCROLL
+    CTEXT           "V", DEP_PULSE_DURATION_Z, 362, 123, 20, 8
+    CTEXT           "Bits", DEP_PULSE_DURATION_I, 391, 123, 20, 8
+    CONTROL         "Stop", SP_STOP_CRASHING, "Button", BS_AUTORADIOBUTTON | 
+                    WS_GROUP, 358, 195, 39, 10
+    CONTROL         "Collect Data in Range", SP_CRASH_IN_RANGE, "Button", 
+                    BS_AUTORADIOBUTTON, 358, 183, 92, 10
+    CONTROL         "Do Nothing", SP_CRASH_DO_NOTHING, "Button", 
+                    BS_AUTORADIOBUTTON, 358, 170, 62, 10
+    GROUPBOX        "Number of Samples", DEP_PULSE_MEASURE, 192, 58, 154, 40
+    EDITTEXT        SP_NUM_SAMPLES, 199, 75, 32, 12, ES_AUTOHSCROLL
+    SCROLLBAR       SP_NUM_SAMPLES_SCROLL, 251, 75, 89, 12
+    LTEXT           "Scan Time:", DEP_PULSE_EXIT, 114, 243, 40, 8
+    LTEXT           "", SP_SCAN_TIME, 163, 243, 33, 8
+    LTEXT           "s", DEP_PULSE_MEASURE_SCROLL, 197, 243, 8, 8
+    PUSHBUTTON      "Smooth", SP_SMOOTH, 521, 83, 40, 14
+    CONTROL         "Current", SP_MEASURE_I, "Button", BS_AUTORADIOBUTTON | 
+                    WS_GROUP, 198, 148, 39, 10
+    CONTROL         "Z", SP_MEASURE_Z, "Button", BS_AUTORADIOBUTTON, 261, 
+                    148, 39, 10
+END
+
+DEPPULSEDLG DIALOG FIXED 18, 14, 241, 318
+STYLE DS_MODALFRAME | WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_SYSMENU
+CAPTION "Pulse Options"
+FONT 8, "Times New Roman"
+BEGIN
+    GROUPBOX        "Pulse Duration:", DEP_PULSE_OPTIONS, 16, 0, 97, 151, 
+                    WS_GROUP
+    EDITTEXT        DEP_PULSE_DURATION, 21, 23, 83, 12, ES_AUTOHSCROLL
+    CONTROL         "Measure Current", DEP_PULSE_MEASURE_I, "Button", 
+                    BS_AUTOCHECKBOX | WS_TABSTOP, 22, 258, 71, 10
+    CONTROL         "Measure Z", DEP_PULSE_MEASURE_Z, "Button", 
+                    BS_AUTOCHECKBOX | WS_TABSTOP, 22, 270, 50, 10
+    CONTROL         "Fixed", DEP_PULSE_DURATION_FIXED, "Button", 
+                    BS_AUTORADIOBUTTON | WS_GROUP, 21, 37, 39, 10
+    CONTROL         "Wait for change in Z", DEP_PULSE_DURATION_Z, "Button", 
+                    BS_AUTORADIOBUTTON, 21, 48, 80, 10
+    CONTROL         "Wait for change in I", DEP_PULSE_DURATION_I, "Button", 
+                    BS_AUTORADIOBUTTON, 21, 59, 86, 10
+    GROUPBOX        "Pulse Measurements", GRID_SAVE, 16, 245, 97, 72, 
+                    WS_GROUP
+    EDITTEXT        DEP_PULSE_MEASURE, 19, 290, 32, 12, ES_AUTOHSCROLL
+    SCROLLBAR       DEP_PULSE_MEASURE_SCROLL, 66, 289, 44, 12
+    LTEXT           "Measure before and after:", DEP_OSCILL_I_MIN, 22, 280, 
+                    85, 8
+    LTEXT           "µs", DEP_OSCILL_I_MAX, 54, 291, 9, 8
+    GROUPBOX        "Pulse Speeds:", DEP_OSCILL_I_MIN_SCROLL, 16, 151, 97, 
+                    92
+    LTEXT           "Bias (V/ms):", DEP_OSCILL_I_MAX_SCROLL, 24, 163, 46, 8
+    EDITTEXT        DEP_PULSE_BIAS_SPEED, 24, 174, 32, 12, ES_AUTOHSCROLL
+    SCROLLBAR       DEP_PULSE_BIAS_SPEED_SCROLL, 62, 174, 48, 12
+    LTEXT           "Current (V/ms):", SP_MEASURE_I, 26, 187, 57, 8
+    EDITTEXT        DEP_PULSE_I_SPEED, 24, 199, 32, 12, ES_AUTOHSCROLL
+    SCROLLBAR       DEP_PULSE_I_SPEED_SCROLL, 62, 199, 48, 12
+    CONTROL         "Step", DEP_PULSE_BIAS_STEP, "Button", BS_AUTOCHECKBOX | 
+                    WS_TABSTOP, 70, 162, 40, 10
+    CONTROL         "µs", DEP_PULSE_DURATION_MICRO, "Button", 
+                    BS_AUTORADIOBUTTON | WS_GROUP, 62, 11, 22, 10
+    CONTROL         "ms", DEP_PULSE_DURATION_MILLI, "Button", 
+                    BS_AUTORADIOBUTTON, 85, 11, 24, 10
+    GROUPBOX        "Delta Z-offset", SP_MEASURE_Z, 115, 94, 125, 122, 
+                    WS_GROUP
+    PUSHBUTTON      "Exit", DEP_PULSE_EXIT, 199, 304, 40, 14
+    EDITTEXT        DEP_PULSE_Z_BITS, 126, 121, 22, 14
+    EDITTEXT        DEP_PULSE_Z_VOLTS, 151, 121, 34, 14, ES_READONLY
+    EDITTEXT        DEP_PULSE_Z_ANGS, 188, 121, 34, 14, ES_READONLY
+    SCROLLBAR       DEP_PULSE_Z_SCROLL, 126, 138, 96, 12
+    LTEXT           "Bits", TIP_ACCEL_EDIT, 129, 111, 20, 8
+    LTEXT           "Voltage", TIP_ACCEL_SCROLL, 153, 111, 27, 8
+    LTEXT           "Angstroms", TIP_I, 187, 111, 38, 8
+    GROUPBOX        "Repeated Pulses", GRID_ANGLE_2, 115, 218, 119, 83
+    LTEXT           "Number of Pulses:", DEP_OSCILL_Z_MIN, 129, 233, 61, 8
+    EDITTEXT        DEP_PULSE_NUMBER, 129, 245, 32, 12, ES_AUTOHSCROLL
+    SCROLLBAR       DEP_PULSE_NUMBER_SCROLL, 175, 245, 48, 12
+    LTEXT           "Delay Between Pulses:", DEP_OSCILL_Z_MAX, 129, 265, 74, 
+                    8
+    EDITTEXT        DEP_PULSE_BETWEEN_DELAY, 129, 280, 68, 12, 
+                    ES_AUTOHSCROLL
+    LTEXT           "µs", DEP_OSCILL_Z_MIN_SCROLL, 205, 281, 9, 8
+    CONTROL         "Measure Current Once:", DEP_PULSE_MEASURE_I_ONCE, 
+                    "Button", BS_AUTOCHECKBOX | WS_TABSTOP, 119, 182, 92, 10
+    EDITTEXT        DEP_PULSE_MEASURE_I_WAIT, 152, 198, 52, 12, 
+                    ES_AUTOHSCROLL
+    LTEXT           "Z-Offset(V/ms):", DEP_OSCILL_Z_MAX_SCROLL, 27, 215, 57, 
+                    8
+    EDITTEXT        DEP_PULSE_Z_SPEED, 25, 227, 32, 12, ES_AUTOHSCROLL
+    SCROLLBAR       DEP_PULSE_Z_SPEED_SCROLL, 63, 227, 48, 12
+    CONTROL         "Crash Protect", DEP_PULSE_Z_CRASH, "Button", 
+                    BS_AUTOCHECKBOX | WS_TABSTOP, 119, 157, 61, 10
+    LTEXT           "µs", GRID_ANGLE_2_SC, 211, 200, 9, 8
+    LTEXT           "Wait", INFO_TEMPERATURE, 127, 200, 20, 8
+    GROUPBOX        "Feedback", GRID_DIST_0, 115, 0, 120, 50, WS_GROUP
+    CONTROL         "On", DEP_PULSE_FEEDBACK_ON, "Button", 
+                    BS_AUTORADIOBUTTON, 128, 12, 34, 10
+    CONTROL         "Off", DEP_PULSE_FEEDBACK_OFF, "Button", 
+                    BS_AUTORADIOBUTTON, 165, 13, 39, 10
+    CONTROL         "On after bias ramp.", DEP_PULSE_FEEDBACK_AFTER, 
+                    "Button", BS_AUTORADIOBUTTON, 128, 25, 76, 10
+    GROUPBOX        "Feedback Freq.", GRID_DIST_0_SC, 115, 50, 120, 43, 
+                    WS_GROUP
+    CONTROL         "", DEP_PULSE_FREQ_100, "Button", BS_AUTORADIOBUTTON, 
+                    126, 64, 42, 10
+    CONTROL         "", DEP_PULSE_FREQ_1, "Button", BS_AUTORADIOBUTTON, 179, 
+                    64, 45, 10
+    CONTROL         "", DEP_PULSE_FREQ_10, "Button", BS_AUTORADIOBUTTON, 126, 
+                    78, 49, 10
+    LTEXT           "", DEP_PULSE_FREQ_LOW, 141, 65, 28, 8
+    LTEXT           "", DEP_PULSE_FREQ_MED, 195, 65, 33, 8, NOT WS_GROUP
+    LTEXT           "", DEP_PULSE_FREQ_HIGH, 141, 79, 31, 8, NOT WS_GROUP
+    EDITTEXT        DEP_PULSE_FEEDBACK_WAIT, 158, 35, 52, 12, ES_AUTOHSCROLL
+    LTEXT           "µs", GRID_DIST_1, 217, 37, 9, 8
+    LTEXT           "Wait", GRID_DIST_1_SC, 133, 37, 20, 8
+    CONTROL         "Use movement bias when moving.", 
+                    DEP_PULSE_USE_MOVE_BIAS, "Button", BS_AUTOCHECKBOX | 
+                    WS_TABSTOP, 119, 168, 115, 10
+    LTEXT           "Change Time", COMMENT2_EXIT, 19, 98, 43, 8
+    EDITTEXT        DEP_PULSE_CHANGE_TIME, 64, 96, 36, 12, ES_AUTOHSCROLL
+    LTEXT           "µs", COMMENT2_EDIT, 101, 98, 9, 8
+    LTEXT           "Average Time", IMAGE_COMMENTS, 19, 112, 44, 8
+    EDITTEXT        DEP_PULSE_AVG_TIME, 64, 110, 36, 12, ES_AUTOHSCROLL
+    LTEXT           "µs", IMAGE_AUTO_INFO, 101, 112, 9, 8
+    LTEXT           "After Time", IMAGE_PRINT, 19, 126, 43, 8
+    EDITTEXT        DEP_PULSE_AFTER_TIME, 64, 124, 36, 12, ES_AUTOHSCROLL
+    LTEXT           "µs", PRINT_EXIT, 101, 126, 9, 8
+    LTEXT           "% Change", 988, 20, 139, 36, 8
+    EDITTEXT        DEP_PULSE_PERCENT_CHANGE, 64, 137, 32, 12, 
+                    ES_AUTOHSCROLL
+    LTEXT           "Avg. every", SUBTRACT_X, 21, 305, 35, 8
+    EDITTEXT        DEP_PULSE_AVG_PTS, 56, 303, 32, 12, ES_AUTOHSCROLL
+    LTEXT           "pts.", SUBTRACT_Y, 91, 305, 20, 8
+    LTEXT           "Ignore Initial", SUBTRACT_GET, 20, 83, 44, 8
+    EDITTEXT        DEP_PULSE_IGNORE_INITIAL, 64, 81, 36, 12, ES_AUTOHSCROLL
+    LTEXT           "µs", COMMENT2_NEW_IMAGE, 101, 83, 9, 8
+    LTEXT           "Max. dur. :", SUB_X, 21, 12, 38, 8
+END
+
+VSCALEDLG DIALOG FIXED 343, 218, 167, 78
+STYLE WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_SYSMENU
+CAPTION "Vertical Scale"
+FONT 8, "Times New Roman"
+BEGIN
+    LTEXT           "Max:", SCAN_Y_SCROLL, 3, 2, 20, 8
+    EDITTEXT        VSCALE_MAX, 10, 12, 32, 12, ES_AUTOHSCROLL
+    SCROLLBAR       VSCALE_MAX_SC, 52, 12, 48, 12
+    PUSHBUTTON      "Set to Max", VSCALE_SET_MAX, 105, 12, 50, 12
+    PUSHBUTTON      "Max + Center", VSCALE_SET_CENTER, 105, 28, 50, 12
+    PUSHBUTTON      "Set to Min", VSCALE_SET_MIN, 105, 42, 50, 11
+    SCROLLBAR       VSCALE_MIN_SC, 52, 42, 48, 12
+    EDITTEXT        VSCALE_MIN, 9, 42, 32, 12, ES_AUTOHSCROLL
+    LTEXT           "Min:", SCAN_X_VOLTS_EDIT, 3, 31, 20, 8, NOT WS_GROUP
+    PUSHBUTTON      "Exit", VSCALE_EXIT, 113, 60, 40, 14
+END
+
+PRESCAN2DLG DIALOG FIXED 247, 36, 315, 202
+STYLE DS_MODALFRAME | WS_VISIBLE | WS_CAPTION
+CAPTION "Prescan 2"
+FONT 8, "Times New Roman"
+BEGIN
+    GROUPBOX        "Crash Protection", SEL_FCNS, 162, 6, 153, 79
+    LTEXT           "If measured quantity is within ", IM_X_SCROLL, 164, 21, 
+                    95, 8
+    EDITTEXT        CRASH_TOLERANCE, 261, 19, 32, 12, ES_AUTOHSCROLL
+    LTEXT           "%", HEATER_TARGET_CURRENT, 298, 21, 15, 8, NOT WS_GROUP
+    LTEXT           "of its limits,", IM_BIG_SMALL, 164, 33, 43, 8, NOT 
+                    WS_GROUP
+    CONTROL         "Do nothing.", CRASH_DO_NOTHING, "Button", 
+                    BS_AUTORADIOBUTTON | WS_GROUP, 173, 43, 55, 10
+    CONTROL         "Stop scanning.", CRASH_STOP, "Button", 
+                    BS_AUTORADIOBUTTON, 173, 53, 63, 10
+    CONTROL         "Change Z-offset a little and continue.", CRASH_AUTO_Z, 
+                    "Button", BS_AUTORADIOBUTTON, 173, 63, 127, 10
+    CONTROL         "Find min/max for Z-offset and continue.", 
+                    CRASH_MINMAX_Z, "Button", BS_AUTORADIOBUTTON, 173, 73, 
+                    138, 10
+    GROUPBOX        "Offset Overshoot Drift Compensation", SCAN_SWITCH_1_2, 
+                    0, 2, 153, 83
+    LTEXT           "Overshoot by", SP_SKIP, 7, 40, 48, 8
+    LTEXT           "%", INFO_WIDTH_PIXELS, 92, 40, 13, 8
+    LTEXT           "Then wait", SCAN_SPEC, 7, 58, 34, 8
+    LTEXT           "s", DEP_MOV_CURRENT, 92, 58, 12, 8
+    LTEXT           "Come back and wait", INFO_WIDTH_ANGS, 8, 74, 63, 8
+    LTEXT           "s", DEP_WRI_CURRENT, 115, 73, 12, 8
+    CONTROL         "Fast Dir.", PRESCAN_OVER_FAST, "Button", 
+                    BS_AUTOCHECKBOX | WS_TABSTOP, 7, 19, 40, 10
+    CONTROL         "Slow Dir.", PRESCAN_OVER_SLOW, "Button", 
+                    BS_AUTOCHECKBOX | WS_TABSTOP, 61, 19, 40, 10
+    GROUPBOX        "Ranges", CONTROLS, 168, 88, 123, 44
+    GROUPBOX        "Offset Ranges", TIP_CONTROLS, 168, 132, 123, 45
+    CONTROL         "± 5 V", X_RANGE_5, "Button", BS_AUTORADIOBUTTON | 
+                    WS_GROUP, 207, 99, 33, 10
+    CONTROL         "± 10 V", X_RANGE_10, "Button", BS_AUTORADIOBUTTON, 246, 
+                    99, 36, 10
+    CONTROL         "± 5 V", Y_RANGE_5, "Button", BS_AUTORADIOBUTTON | 
+                    WS_GROUP, 207, 109, 33, 10
+    CONTROL         "± 10 V", Y_RANGE_10, "Button", BS_AUTORADIOBUTTON, 246, 
+                    109, 36, 10
+    CONTROL         "± 5 V", Z_RANGE_5, "Button", BS_AUTORADIOBUTTON | 
+                    WS_GROUP, 207, 119, 33, 10
+    CONTROL         "± 10 V", Z_RANGE_10, "Button", BS_AUTORADIOBUTTON, 246, 
+                    119, 36, 10
+    CONTROL         "± 5 V", X_OFFSET_RANGE_5, "Button", BS_AUTORADIOBUTTON | 
+                    WS_GROUP, 208, 144, 33, 10
+    CONTROL         "± 10 V", X_OFFSET_RANGE_10, "Button", 
+                    BS_AUTORADIOBUTTON, 247, 144, 36, 10
+    CONTROL         "± 5 V", Y_OFFSET_RANGE_5, "Button", BS_AUTORADIOBUTTON | 
+                    WS_GROUP, 208, 154, 33, 10
+    CONTROL         "± 10 V", Y_OFFSET_RANGE_10, "Button", 
+                    BS_AUTORADIOBUTTON, 247, 154, 36, 10
+    CONTROL         "± 5 V", Z_OFFSET_RANGE_5, "Button", BS_AUTORADIOBUTTON | 
+                    WS_GROUP, 208, 164, 33, 10
+    CONTROL         "± 10 V", Z_OFFSET_RANGE_10, "Button", 
+                    BS_AUTORADIOBUTTON, 247, 164, 36, 10
+    LTEXT           "X", 453, 176, 100, 14, 8
+    LTEXT           "Y", O_CH_1, 176, 110, 14, 8
+    LTEXT           "Z", O_CH_2, 176, 120, 14, 8
+    LTEXT           "X", O_CH_3, 176, 145, 14, 8
+    LTEXT           "Y", O_CH_4, 176, 155, 14, 8
+    LTEXT           "Z", IO_POS_ANGS, 176, 165, 14, 8
+    PUSHBUTTON      "Exit", PRESCAN2_EXIT, 257, 187, 40, 14
+    EDITTEXT        PRESCAN_OVER_PERCENT, 51, 37, 32, 12, ES_AUTOHSCROLL
+    EDITTEXT        PRESCAN_OVER_WAIT1, 46, 56, 32, 12, ES_AUTOHSCROLL
+    EDITTEXT        PRESCAN_OVER_WAIT2, 75, 71, 32, 12, ES_AUTOHSCROLL
+    GROUPBOX        "Sample Type", IMAGE_INFO, 0, 99, 157, 32
+    EDITTEXT        SAMPLE_TYPE_TEXT, 5, 114, 94, 12, ES_AUTOHSCROLL
+    GROUPBOX        "Dosed With", DEP_PULSE_EXIT, 0, 132, 157, 32
+    EDITTEXT        PRESCAN_DOSED_WITH, 5, 145, 61, 12, ES_AUTOHSCROLL
+    COMBOBOX        PRESCAN_SAMPLE_LIST, 102, 114, 48, 55, CBS_DROPDOWNLIST | 
+                    CBS_SORT | WS_VSCROLL | WS_TABSTOP
+    COMBOBOX        PRESCAN_DOSED_LIST, 109, 145, 42, 55, CBS_DROPDOWNLIST | 
+                    CBS_SORT | WS_VSCROLL | WS_TABSTOP
+    LTEXT           "L", SP_SKIP_SCROLL, 101, 147, 6, 8
+    LTEXT           "Temperature:", COARSE_STEP_GROUP, 0, 89, 47, 8, NOT 
+                    WS_GROUP
+    EDITTEXT        PRESCAN_TEMP, 50, 87, 32, 12, ES_AUTOHSCROLL
+    LTEXT           "K", TIP_REMOVE, 86, 89, 20, 8, NOT WS_GROUP
+    EDITTEXT        PRESCAN_DOSED_LANG, 68, 145, 32, 12, ES_AUTOHSCROLL
+END
+
+SUBTRACTDLG DIALOG 263, 58, 143, 62
+STYLE WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_SYSMENU
+CAPTION "Subtract"
+FONT 8, "Times New Roman"
+BEGIN
+    PUSHBUTTON      "Exit", SUB_EXIT, 102, 47, 40, 14
+    GROUPBOX        "Subtract", -1, 2, 2, 48, 44
+    PUSHBUTTON      "1", SUB_1, 7, 14, 18, 14
+    PUSHBUTTON      "2", SUB_2, 26, 14, 18, 14
+    PUSHBUTTON      "3", SUB_3, 7, 29, 18, 14
+    PUSHBUTTON      "4", SUB_4, 26, 29, 18, 14
+    GROUPBOX        "Offsets", IMAGE_PRINT, 53, 2, 89, 44
+    LTEXT           "X", PRINT_EXIT, 58, 13, 7, 8
+    LTEXT           "Y", 988, 58, 30, 7, 8
+    EDITTEXT        SUB_X, 70, 11, 32, 12, ES_AUTOHSCROLL
+    EDITTEXT        SUB_Y, 70, 28, 32, 12, ES_AUTOHSCROLL
+    PUSHBUTTON      "Get", SUB_GET, 105, 18, 34, 14
+END
+
+GRIDDLG DIALOG 290, 81, 192, 258
+STYLE WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_SYSMENU
+CAPTION "Grid"
+FONT 8, "Times New Roman"
+BEGIN
+    SCROLLBAR       GRID_ANGLE_0_SC, 15, 29, 48, 12
+    GROUPBOX        "Copy", -1, 10, 211, 48, 44
+    PUSHBUTTON      "Exit", GRID_EXIT, 146, 241, 40, 14
+    PUSHBUTTON      "1", GRID_COPY_1, 15, 223, 18, 14
+    PUSHBUTTON      "2", GRID_COPY_2, 34, 223, 18, 14
+    PUSHBUTTON      "3", GRID_COPY_3, 15, 238, 18, 14
+    PUSHBUTTON      "4", GRID_COPY_4, 34, 238, 18, 14
+    PUSHBUTTON      "Save", GRID_SAVE, 146, 226, 40, 14
+    PUSHBUTTON      "Load", GRID_LOAD, 146, 211, 40, 14
+    GROUPBOX        "Angle (Degrees)", DEP_1_4_IMAGES, 10, 3, 172, 42
+    EDITTEXT        GRID_ANGLE_0, 22, 14, 32, 12, ES_AUTOHSCROLL
+    EDITTEXT        GRID_ANGLE_1, 78, 14, 32, 12, ES_AUTOHSCROLL
+    SCROLLBAR       GRID_ANGLE_1_SC, 72, 28, 48, 12
+    EDITTEXT        GRID_ANGLE_2, 132, 14, 32, 12, ES_AUTOHSCROLL
+    SCROLLBAR       GRID_ANGLE_2_SC, 126, 28, 48, 12
+    GROUPBOX        "Distance (Å)", INFO_TEMPERATURE, 10, 46, 172, 40
+    EDITTEXT        GRID_DIST_0, 22, 57, 32, 12, ES_AUTOHSCROLL
+    SCROLLBAR       GRID_DIST_0_SC, 16, 71, 48, 12
+    EDITTEXT        GRID_DIST_1, 78, 57, 32, 12, ES_AUTOHSCROLL
+    SCROLLBAR       GRID_DIST_1_SC, 72, 71, 48, 12
+    EDITTEXT        GRID_DIST_2, 132, 57, 32, 12, ES_AUTOHSCROLL
+    SCROLLBAR       GRID_DIST_2_SC, 126, 71, 48, 12
+    GROUPBOX        "R (Å)", DEP_PULSE_CHANGE_TIME, 10, 88, 172, 40
+    EDITTEXT        GRID_YINT_0, 22, 99, 32, 12, ES_AUTOHSCROLL
+    SCROLLBAR       GRID_YINT_0_SC, 16, 113, 48, 12
+    EDITTEXT        GRID_YINT_1, 78, 99, 32, 12, ES_AUTOHSCROLL
+    SCROLLBAR       GRID_YINT_1_SC, 72, 113, 48, 12
+    EDITTEXT        GRID_YINT_2, 132, 99, 32, 12, ES_AUTOHSCROLL
+    SCROLLBAR       GRID_YINT_2_SC, 126, 113, 48, 12
+    GROUPBOX        "From Line/Number of Lines", COMMENT2_EDIT, 10, 132, 172, 
+                    28
+    PUSHBUTTON      "Get", GRID_GET_0, 16, 143, 17, 14
+    CONTROL         "", GRID_HIDE_0, "Button", BS_AUTOCHECKBOX | WS_TABSTOP, 
+                    22, 175, 11, 10
+    CONTROL         "", GRID_LOCK_0, "Button", BS_AUTOCHECKBOX | WS_TABSTOP, 
+                    49, 175, 11, 10
+    PUSHBUTTON      "Get", GRID_GET_1, 72, 143, 17, 14
+    CONTROL         "", GRID_HIDE_1, "Button", BS_AUTOCHECKBOX | WS_TABSTOP, 
+                    76, 175, 11, 10
+    CONTROL         "", GRID_LOCK_1, "Button", BS_AUTOCHECKBOX | WS_TABSTOP, 
+                    105, 175, 11, 10
+    PUSHBUTTON      "Get", GRID_GET_2, 128, 142, 17, 14
+    CONTROL         "", GRID_HIDE_2, "Button", BS_AUTOCHECKBOX | WS_TABSTOP, 
+                    131, 175, 11, 10
+    CONTROL         "", GRID_LOCK_2, "Button", BS_AUTOCHECKBOX | WS_TABSTOP, 
+                    161, 175, 11, 10
+    GROUPBOX        "Hide/Lock", COMMENT2_EXIT, 11, 162, 172, 28
+    EDITTEXT        GRID_NUM_LINES_0, 36, 144, 25, 12, ES_AUTOHSCROLL
+    EDITTEXT        GRID_NUM_LINES_1, 92, 144, 25, 12, ES_AUTOHSCROLL
+    EDITTEXT        GRID_NUM_LINES_2, 148, 144, 25, 12, ES_AUTOHSCROLL
+    PUSHBUTTON      "Match", GRID_MATCH_3, 134, 192, 40, 14
+    SCROLLBAR       GRID_VERT_SC, 122, 211, 12, 40, SBS_VERT
+    SCROLLBAR       GRID_HORIZ_SC, 68, 240, 48, 12
+    PUSHBUTTON      "Hide Grids", GRID_TOGGLE, 66, 213, 48, 14
+END
+
+COUNTDLG DIALOG 293, 168, 160, 100
+STYLE DS_MODALFRAME | WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_SYSMENU
+CAPTION "Counting"
+FONT 8, "MS Sans Serif"
+BEGIN
+    PUSHBUTTON      "Exit", COUNT_EXIT, 105, 73, 40, 14
+END
+
+COMMENT2DLG DIALOG 351, 239, 157, 93
+STYLE DS_MODALFRAME | WS_POPUP | WS_VISIBLE | WS_CAPTION
+CAPTION "Comments"
+FONT 8, "Times New Roman"
+BEGIN
+    EDITTEXT        COMMENT2_EDIT, 1, 1, 155, 80, ES_MULTILINE | 
+                    ES_AUTOVSCROLL | ES_NOHIDESEL | ES_READONLY | WS_VSCROLL | 
+                    WS_HSCROLL | 0x1000
+    PUSHBUTTON      "Done", COMMENT2_EXIT, 1, 82, 155, 11
+END
+
+PRINTDLG DIALOG 84, 25, 481, 311
+STYLE DS_MODALFRAME | WS_POPUP | WS_VISIBLE | WS_CAPTION
+CAPTION "Print"
+FONT 8, "Times New Roman"
+BEGIN
+    PUSHBUTTON      "Exit", PRINT_EXIT, 437, 297, 40, 14
+    GROUPBOX        "Image Options", 988, 372, 0, 100, 148
+    LTEXT           "inches", 1011, 440, 13, 25, 8
+    CONTROL         "B/W", PRINT_BW, "Button", BS_AUTORADIOBUTTON | WS_GROUP, 
+                    392, 207, 32, 10
+    CONTROL         "Grey", PRINT_GREY, "Button", BS_AUTORADIOBUTTON, 392, 
+                    217, 39, 10
+    CONTROL         "Color", PRINT_COLOR, "Button", BS_AUTORADIOBUTTON, 392, 
+                    228, 39, 10
+    LTEXT           "Output:", 1000, 380, 198, 27, 8
+    LTEXT           "Size:", 1009, 378, 13, 20, 8
+    EDITTEXT        PRINT_IMAGE_SIZE, 403, 10, 32, 12, ES_AUTOHSCROLL
+    EDITTEXT        PRINT_IMAGE_FILENAME, 420, 48, 44, 12, ES_AUTOHSCROLL | 
+                    ES_READONLY
+    EDITTEXT        PRINT_GRID_FILENAME, 420, 62, 44, 12, ES_AUTOHSCROLL | 
+                    ES_READONLY
+    PUSHBUTTON      "Pallete", PRINT_PALETTE, 379, 114, 36, 12
+    EDITTEXT        PRINT_PALETTE_FILENAME, 420, 114, 43, 12, ES_AUTOHSCROLL | 
+                    ES_READONLY
+    LTEXT           "Grid Color:", 1018, 381, 78, 40, 8
+    EDITTEXT        PRINT_GRID_R, 382, 99, 21, 12, ES_AUTOHSCROLL
+    EDITTEXT        PRINT_GRID_G, 408, 99, 21, 12, ES_AUTOHSCROLL
+    EDITTEXT        PRINT_GRID_B, 434, 99, 21, 12, ES_AUTOHSCROLL
+    LTEXT           "R", 1023, 388, 88, 9, 8
+    LTEXT           "G", 1024, 414, 88, 9, 8
+    LTEXT           "B", 1025, 440, 88, 9, 8
+    LTEXT           "Position (inches):", 1026, 379, 25, 60, 8
+    LTEXT           "X", 1027, 380, 37, 11, 8
+    EDITTEXT        PRINT_IMAGE_X, 390, 35, 32, 12, ES_AUTOHSCROLL
+    LTEXT           "Y", 1029, 426, 37, 9, 8
+    EDITTEXT        PRINT_IMAGE_Y, 435, 35, 32, 12, ES_AUTOHSCROLL
+    GROUPBOX        "Device Options", 1032, 372, 187, 100, 93
+    LTEXT           "Filename:", 1033, 375, 243, 33, 8
+    EDITTEXT        PRINT_DEVICE_FILENAME, 414, 240, 44, 12, ES_AUTOHSCROLL
+    LTEXT           "Resolution:", 1035, 375, 255, 37, 8
+    EDITTEXT        PRINT_DEVICE_RES, 413, 254, 32, 12, ES_AUTOHSCROLL
+    LTEXT           "DPI", 1037, 449, 255, 14, 8
+    PUSHBUTTON      "Print", PRINT_PRINT, 437, 282, 40, 14
+    GROUPBOX        "Add Image", 1039, 270, 76, 44, 41
+    PUSHBUTTON      "1", PRINT_ADD_1, 275, 88, 15, 12
+    PUSHBUTTON      "2", PRINT_ADD_2, 294, 88, 15, 12
+    PUSHBUTTON      "3", PRINT_ADD_3, 275, 103, 15, 12
+    PUSHBUTTON      "4", PRINT_ADD_4, 294, 103, 15, 12
+    LTEXT           "Filename:", 1045, 380, 50, 33, 8
+    LTEXT           "Grid:", 1046, 381, 64, 20, 8
+    GROUPBOX        "Link Image", 1047, 318, 76, 44, 41
+    PUSHBUTTON      "1", PRINT_LINK_1, 323, 88, 15, 12
+    PUSHBUTTON      "2", PRINT_LINK_2, 342, 88, 15, 12
+    PUSHBUTTON      "3", PRINT_LINK_3, 323, 103, 15, 12
+    PUSHBUTTON      "4", PRINT_LINK_4, 342, 103, 15, 12
+    LTEXT           "Gamma:", 1053, 381, 133, 29, 8
+    EDITTEXT        PRINT_DEVICE_GAMMA, 419, 131, 32, 12, ES_AUTOHSCROLL
+    PUSHBUTTON      "Load", PRINT_LOAD, 378, 282, 40, 14
+    PUSHBUTTON      "Save", PRINT_SAVE, 378, 297, 40, 14
+    GROUPBOX        "Object Selection", 1057, 267, 0, 98, 139
+    CONTROL         "Select", PRINT_OBJECT_SELECT, "Button", 
+                    BS_AUTORADIOBUTTON | WS_GROUP, 274, 15, 39, 10
+    CONTROL         "Move", PRINT_OBJECT_MOVE, "Button", BS_AUTORADIOBUTTON, 
+                    274, 27, 39, 10
+    CONTROL         "Arrow", PRINT_ADD_ARROW, "Button", BS_AUTORADIOBUTTON, 
+                    289, 52, 39, 10
+    CONTROL         "Text", PRINT_ADD_TEXT, "Button", BS_AUTORADIOBUTTON, 
+                    289, 64, 39, 10
+    PUSHBUTTON      "Delete Selected", PRINT_DELETE_SELECTED, 286, 120, 63, 
+                    14, WS_GROUP
+    LTEXT           "Add:", 1064, 276, 40, 20, 8
+    LTEXT           "Status:", 1065, 1, 300, 29, 8
+    LTEXT           "", PRINT_STATUS, 35, 300, 198, 8
+    GROUPBOX        "Text", 1067, 249, 183, 118, 121
+    EDITTEXT        1068, 253, 193, 110, 34, ES_MULTILINE | ES_AUTOVSCROLL | 
+                    ES_AUTOHSCROLL
+    LTEXT           "Color:", 1069, 255, 229, 40, 8
+    EDITTEXT        1070, 256, 250, 21, 12, ES_AUTOHSCROLL
+    EDITTEXT        1071, 282, 250, 21, 12, ES_AUTOHSCROLL
+    EDITTEXT        1072, 308, 250, 21, 12, ES_AUTOHSCROLL
+    LTEXT           "R", 1073, 262, 239, 9, 8
+    LTEXT           "G", 1074, 288, 239, 9, 8
+    LTEXT           "B", 1075, 314, 239, 9, 8
+    PUSHBUTTON      "Font", 1076, 253, 265, 40, 14
+    EDITTEXT        1077, 327, 266, 32, 12, ES_AUTOHSCROLL
+    LTEXT           "Size:", 1078, 298, 268, 20, 8
+    EDITTEXT        1079, 253, 283, 110, 12, ES_AUTOHSCROLL
+END

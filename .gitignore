@@ -1,0 +1,58 @@
+# Object files and archives
+*.o
+*.obj
+*.exe
+*.dll
+*.so
+*.a
+*.lib
+
+# Build folders
+Debug/
+Release/
+
+# IDE and editor folders
+*.ncb
+*.suo
+*.sbr
+*.bsp
+*.ilk
+*.pdb
+*.idb
+*.opt
+*.plg
+*.dsw
+*.dsp
+
+# Backup and temporary files
+Thumbs.db
+*.bak
+*.tmp
+*.swp
+
+# Log files and databases
+*.log
+
+# Dependency directories
+node_modules/
+bin/
+obj/
+
+# Configuration files with sensitive information
+config.ini
+
+# System-specific files
+.DS_Store
+
+# Specific build outputs
+*.exe
+*.aps
+*.res
+
+# Ignore all .INI files that might contain configurations
+*.ini
+
+# Ignore specific data files
+*.dx
+
+PrintTest/

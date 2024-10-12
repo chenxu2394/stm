@@ -1,0 +1,54 @@
+%!PS-Adobe-3.0 EPSF-3.0
+%%Creator: HoGroupSTM
+%%Pages: 1
+%%Page: 1 1
+%%EndComments
+/arrowdict 14 dict def
+arrowdict begin
+  /mtrx matrix def
+end
+
+/arrow
+{ arrowdict begin
+        /headlength exch def
+        /halfheadthickness exch 2 div def
+        /halfthickness exch 2 div def
+        /tipy exch def /tipx exch def
+        /taily exch def /tailx exch def
+        /dx tipx tailx sub def
+        /dy tipy taily sub def
+        /arrowlength dx dx mul dy dy mul add sqrt def
+        /angle dy dx atan def
+        /base arrowlength headlength sub def
+        /savematrix mtrx currentmatrix def
+        tailx taily translate
+        angle rotate
+        0 halfthickness neg moveto
+        base halfthickness neg lineto
+        base halfheadthickness neg lineto
+        arrowlength 0 lineto
+        base halfheadthickness lineto
+        base halfthickness lineto
+        0 halfthickness lineto
+        closepath
+        savematrix setmatrix
+        end
+} def
+/circrad 1 def
+/inch 1 def
+
+/circ { circrad inch 0 360 arc fill } def
+
+/plus { /ycoord exch def /xcoord exch def newpath xcoord ycoord moveto circrad
+inch 0 rmoveto circrad -2 mul inch 0 rlineto circrad inch circrad inch rmoveto
+0 circrad -2 mul inch rlineto stroke} def
+
+/cross { /ycoord exch def /xcoord exch def newpath xcoord ycoord moveto circrad
+1.414 div inch circrad 1.414 div inch rmoveto circrad -1.414 mul inch 
+circrad -1.414 mul inch rlineto 0 circrad 1.414 mul inch rmoveto
+circrad 1.414 mul inch circrad -1.414 mul inch rlineto stroke} def
+
+/star { cross xcoord ycoord plus } def
+
+/cd { circ } def
+        
