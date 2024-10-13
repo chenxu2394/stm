@@ -9,6 +9,8 @@ This repository houses the GUI source code for controlling a Scanning Tunneling 
 
 Communications between the GUI and DSP are facilitated through an RS232 port, with the GUI sending commands to the DSP, which executes them and returns the results.
 
+![Scheme](./scheme.png)
+
 ## STM Control Commands
 
 The GUI controls the DSP through a series of commands sent over the serial connection. Each command is activated by sending a specific character code to the DSP. Here are some example commands:
